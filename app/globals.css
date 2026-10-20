@@ -86,3 +86,65 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.10);
 }
+
+/* ── AI Page advanced animations ── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes glow-purple {
+  0%, 100% { box-shadow: 0 0 24px rgba(59,15,140,0.35), 0 0 48px rgba(59,15,140,0.15); }
+  50%       { box-shadow: 0 0 40px rgba(59,15,140,0.65), 0 0 80px rgba(105,41,196,0.25); }
+}
+@keyframes glow-blue {
+  0%, 100% { box-shadow: 0 0 24px rgba(30,144,255,0.35), 0 0 48px rgba(30,144,255,0.12); }
+  50%       { box-shadow: 0 0 40px rgba(30,144,255,0.65), 0 0 80px rgba(30,144,255,0.22); }
+}
+@keyframes border-spin {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+@keyframes flow-line {
+  from { stroke-dashoffset: 400; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes scan-down {
+  0%   { top: -4px; opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes text-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+.float-1 { animation: float-y 4.5s ease-in-out infinite; }
+.float-2 { animation: float-y 4.5s ease-in-out 1.5s infinite; }
+.float-3 { animation: float-y 4.5s ease-in-out 3s infinite; }
+.glow-card-purple { animation: glow-purple 3s ease-in-out infinite; }
+.glow-card-blue   { animation: glow-blue   3s ease-in-out infinite; }
+.shimmer-text {
+  background: linear-gradient(90deg, #6929C4 0%, #fff 40%, #1E90FF 60%, #6929C4 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shimmer 4s linear infinite;
+}
+.ai-scan::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -4px; height: 2px;
+  background: linear-gradient(90deg, transparent, #3B0F8C, #1E90FF, transparent);
+  animation: scan-down 3s linear infinite;
+}

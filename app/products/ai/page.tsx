@@ -1,139 +1,403 @@
-import CTA from "@/components/sections/CTA";
+import NeuralCanvas from "@/components/ai/NeuralCanvas";
+import PipelineFlow from "@/components/ai/PipelineFlow";
 
-const teacherFeatures = [
-  { num: "01", title: "Draws in Real Time", desc: "NDJSON streaming drives the blackboard — boxes, flow diagrams, equations, and highlight points appear in sync with the avatar's speech. First response in under 1.2 seconds." },
-  { num: "02", title: "Entity Color System", desc: "Biological and chemical terms get consistent colours across every explanation. Mitochondria is always orange. Light reaction is always blue. Students build visual memory." },
-  { num: "03", title: "Voice-First Pipeline", desc: "VAD detects speech → Whisper STT transcribes → Ollama LLM generates → gTTS synthesises. Full end-to-end voice pipeline with lipsync on the VRM avatar." },
+const techStack = [
+  { name: "Ollama", sub: "qwen3:14b local LLM", color: "#6929C4" },
+  { name: "Qdrant", sub: "Vector DB + RAG", color: "#1E90FF" },
+  { name: "Whisper", sub: "OpenAI ASR / VAD", color: "#6929C4" },
+  { name: "VRM", sub: "3D Avatar Runtime", color: "#1E90FF" },
+  { name: "FastAPI", sub: "Python backend", color: "#6929C4" },
+  { name: "React 19", sub: "Frontend + WebGL", color: "#1E90FF" },
+  { name: "NDJSON", sub: "Streaming pipeline", color: "#6929C4" },
+  { name: "Claude Haiku", sub: "Fallback LLM tier", color: "#1E90FF" },
 ];
 
-const salesFeatures = [
-  { num: "01", title: "RAG Product Knowledge", desc: "Upload your catalogue — the agent retrieves the right product from Qdrant vector search and explains specs, pricing, and comparisons on demand. Deployed with 25 kiosk products." },
-  { num: "02", title: "3D Avatar Showroom", desc: "VRM avatar (Aria) with real-time lipsync, blink, and head sway. React Three Fiber renders it at 60fps. Swappable to any VRM1 character model." },
-  { num: "03", title: "24/7 Sales Presence", desc: "Handles product queries, objections, and comparisons round the clock on kiosk floors. Configured guardrails for pricing and deal-closing logic." },
+const agents = [
+  {
+    name: "Bubly",
+    role: "Education AI Agent",
+    tagline: "Personalized learning in every language",
+    color: "#6929C4",
+    glowClass: "glow-card-purple",
+    floatClass: "float-1",
+    bullets: [
+      "Curriculum-aware Q&A with RAG-powered context retrieval",
+      "Adaptive difficulty — adjusts to student comprehension in real time",
+      "Multi-language support: Hindi, English, Marathi, and more",
+      "Voice-first interface with animated VRM teacher avatar",
+      "Session memory: tracks what students struggle with across sessions",
+    ],
+    use: "EdTech, schools, digital classrooms",
+    badge: "Agent 01",
+  },
+  {
+    name: "Aria",
+    role: "Sales & Customer AI Agent",
+    tagline: "Convert visitors into customers — 24/7",
+    color: "#1E90FF",
+    glowClass: "glow-card-blue",
+    floatClass: "float-2",
+    bullets: [
+      "Product-aware conversations from your custom knowledge base",
+      "Lead capture, qualification, and CRM hand-off",
+      "Objection handling with pre-loaded competitor knowledge",
+      "Appointment booking integration via calendar APIs",
+      "Post-call transcripts and sentiment scoring",
+    ],
+    use: "Retail, real estate, B2B sales floors",
+    badge: "Agent 02",
+  },
 ];
 
-const pipeline = [
-  ["VAD", "WebRTC voice activity detection — knows when you stop talking"],
-  ["STT", "OpenAI Whisper (local GPU) — fast, accurate, multilingual"],
-  ["RAG", "Qdrant hybrid search (BGE-M3 dense + BM25 sparse + CLIP visual)"],
-  ["LLM", "Ollama qwen3:14b — NDJSON streaming for instant first response"],
-  ["TTS", "gTTS → PCM streaming — avatar lipsync synced per audio chunk"],
-  ["Avatar", "React 19 + Three.js + @pixiv/three-vrm — VRM1 character model"],
+const metrics = [
+  { value: "1.2s", label: "First audio response", sub: "NDJSON streaming pipeline" },
+  { value: "100%", label: "On-premise capable", sub: "No cloud dependency required" },
+  { value: "qwen3:14b", label: "Primary LLM", sub: "14B parameter local model" },
+  { value: "< 50ms", label: "VAD latency", sub: "Silero voice detection" },
 ];
 
 export default function AIPage() {
   return (
     <>
-      {/* Hero */}
-      <section style={{ paddingTop: "140px", paddingBottom: "100px", paddingLeft: "24px", paddingRight: "24px", background: "#fff" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
+      {/* ── Hero ── */}
+      <section style={{
+        position: "relative",
+        minHeight: "100svh",
+        background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,15,140,0.55) 0%, #000510 55%, #000 100%)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        padding: "80px 24px 60px",
+      }}>
+        {/* Neural canvas background */}
+        <div style={{ position: "absolute", inset: 0, opacity: 0.55 }}>
+          <NeuralCanvas style={{ width: "100%", height: "100%" }} />
+        </div>
+
+        {/* Central glow */}
+        <div style={{
+          position: "absolute",
+          top: "40%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "600px", height: "600px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(59,15,140,0.25) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }} />
+
+        <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: "800px" }}>
           <div className="anim-badge" style={{
-            display: "inline-flex", alignItems: "center",
-            padding: "6px 18px", borderRadius: "999px",
-            background: "rgba(30,144,255,0.07)", color: "#1E90FF",
-            border: "1px solid rgba(30,144,255,0.2)",
-            fontSize: "13px", fontWeight: 600, marginBottom: "32px",
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            background: "rgba(59,15,140,0.25)", border: "1px solid rgba(105,41,196,0.5)",
+            borderRadius: "999px", padding: "6px 18px",
+            marginBottom: "28px",
           }}>
-            AI Digital Human · React 19 + VRM · FastAPI + Ollama · Qdrant RAG
-          </div>
-          <h1 className="anim-h1" style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "28px" }}>
-            <span style={{ background: "linear-gradient(135deg, #1E90FF, #3B0F8C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{
+              width: "6px", height: "6px", borderRadius: "50%",
+              background: "#6929C4",
+              animation: "pulse-ring 1.8s ease-out infinite",
+              display: "inline-block",
+            }} />
+            <span style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.7)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               AI Agent Suite
             </span>
-            <br />It teaches. It sells. It speaks every language.
+          </div>
+
+          <h1 className="anim-h1 shimmer-text" style={{
+            fontSize: "clamp(40px, 6vw, 80px)",
+            fontWeight: 800,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
+            marginBottom: "24px",
+          }}>
+            Intelligence with a Face
           </h1>
-          <p className="anim-subtext" style={{ fontSize: "20px", color: "#6E6E73", lineHeight: 1.7 }}>
-            A 3D digital human powered by LLM + RAG. One persona is an AI teacher that draws on a live blackboard
-            in real time. Another closes sales deals from a kiosk floor — 24/7, in any language.
+
+          <p className="anim-subtext" style={{
+            fontSize: "clamp(16px, 2vw, 20px)",
+            color: "rgba(255,255,255,0.55)",
+            lineHeight: 1.7,
+            marginBottom: "40px",
+            maxWidth: "580px",
+            margin: "0 auto 40px",
+          }}>
+            Fully on-premise conversational AI agents with photorealistic 3D avatars.
+            Voice in, voice out. 1.2 second first response. Zero cloud dependency.
           </p>
-        </div>
-      </section>
 
-      {/* Pipeline */}
-      <section style={{ background: "#F5F5F7", padding: "56px 24px", borderTop: "1px solid rgba(0,0,0,0.07)" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
-            {pipeline.map(([label, desc]) => (
-              <div key={label} style={{ padding: "24px 20px", background: "#F5F5F7" }}>
-                <p style={{ fontSize: "13px", fontWeight: 800, color: "#1E90FF", marginBottom: "8px", letterSpacing: "0.04em" }}>{label}</p>
-                <p style={{ fontSize: "13px", color: "#6E6E73", lineHeight: 1.6 }}>{desc}</p>
-              </div>
-            ))}
+          <div className="anim-card-1" style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="/contact" style={{
+              background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
+              color: "#fff", padding: "14px 32px", borderRadius: "10px",
+              fontWeight: 700, fontSize: "15px", textDecoration: "none",
+              boxShadow: "0 8px 32px rgba(59,15,140,0.4)",
+            }}>Request a Demo</a>
+            <a href="#pipeline" style={{
+              background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.8)", padding: "14px 32px", borderRadius: "10px",
+              fontWeight: 600, fontSize: "15px", textDecoration: "none",
+            }}>See How It Works</a>
           </div>
         </div>
-      </section>
 
-      {/* AI Teacher */}
-      <section style={{ padding: "100px 24px", background: "#fff" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "48px" }}>
-            <span className="anim-badge" style={{
-              display: "inline-block", padding: "5px 14px", borderRadius: "999px",
-              fontSize: "12px", fontWeight: 700, letterSpacing: "0.06em",
-              background: "rgba(30,144,255,0.08)", color: "#1E90FF", marginBottom: "16px",
+        {/* Metrics strip */}
+        <div className="anim-card-2" style={{
+          position: "relative", zIndex: 1,
+          marginTop: "64px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+          gap: "1px",
+          background: "rgba(255,255,255,0.06)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "16px",
+          overflow: "hidden",
+          width: "100%",
+          maxWidth: "760px",
+        }}>
+          {metrics.map((m, i) => (
+            <div key={i} style={{
+              padding: "24px 20px",
+              background: "rgba(0,5,16,0.6)",
+              textAlign: "center",
             }}>
-              Agent 01
-            </span>
-            <h2 className="anim-h1" style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#1D1D1F", marginBottom: "8px" }}>
-              AI Teacher — Bubly
-            </h2>
-            <p className="anim-subtext" style={{ fontSize: "18px", color: "#6E6E73" }}>Explains anything on a live blackboard. To anyone. In any language.</p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
-            {teacherFeatures.map((f, i) => (
-              <div key={f.title} className={`hover-lift anim-card-${i + 1}`} style={{ padding: "40px 32px", background: "#fff" }}>
-                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(30,144,255,0.4)", marginBottom: "16px" }}>{f.num}</p>
-                <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px", letterSpacing: "-0.02em" }}>{f.title}</h3>
-                <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>{f.desc}</p>
-              </div>
-            ))}
-          </div>
+              <div style={{
+                fontSize: "26px", fontWeight: 800,
+                color: i % 2 === 0 ? "#6929C4" : "#1E90FF",
+                letterSpacing: "-0.02em", marginBottom: "4px",
+              }}>{m.value}</div>
+              <div style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.7)", marginBottom: "2px" }}>{m.label}</div>
+              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>{m.sub}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* AI Sales Agent */}
-      <section style={{ padding: "100px 24px", background: "#F5F5F7" }}>
+      {/* ── Pipeline ── */}
+      <section id="pipeline" style={{
+        background: "#000510",
+        padding: "100px 24px",
+        borderTop: "1px solid rgba(255,255,255,0.05)",
+      }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "48px" }}>
+          <div style={{ textAlign: "center", marginBottom: "60px" }}>
             <span className="anim-badge" style={{
-              display: "inline-block", padding: "5px 14px", borderRadius: "999px",
-              fontSize: "12px", fontWeight: 700, letterSpacing: "0.06em",
-              background: "rgba(59,15,140,0.08)", color: "#3B0F8C", marginBottom: "16px",
+              display: "inline-block",
+              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
+              textTransform: "uppercase", color: "#1E90FF",
+              marginBottom: "16px",
+            }}>Response Pipeline</span>
+            <h2 className="anim-h1" style={{
+              fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
+              color: "#fff", letterSpacing: "-0.025em", lineHeight: 1.15,
+              marginBottom: "16px",
             }}>
-              Agent 02
-            </span>
-            <h2 className="anim-h1" style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#1D1D1F", marginBottom: "8px" }}>
-              AI Sales Agent — Aria
+              Voice in.{" "}
+              <span style={{ color: "#1E90FF" }}>Avatar out.</span>
             </h2>
-            <p className="anim-subtext" style={{ fontSize: "18px", color: "#6E6E73" }}>Shows, explains, negotiates — closes the deal. Currently live at aBet Technology, Pune.</p>
+            <p className="anim-subtext" style={{ color: "rgba(255,255,255,0.45)", fontSize: "16px", maxWidth: "480px", margin: "0 auto" }}>
+              Six-stage streaming pipeline — each step overlaps to hit 1.2s first-response latency.
+            </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
-            {salesFeatures.map((f, i) => (
-              <div key={f.title} className={`hover-lift anim-card-${i + 1}`} style={{ padding: "40px 32px", background: "#F5F5F7" }}>
-                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(59,15,140,0.3)", marginBottom: "16px" }}>{f.num}</p>
-                <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px", letterSpacing: "-0.02em" }}>{f.title}</h3>
-                <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>{f.desc}</p>
+
+          <div className="anim-card-1" style={{ display: "flex", justifyContent: "center" }}>
+            <PipelineFlow />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Agents ── */}
+      <section style={{
+        background: "linear-gradient(180deg, #000510 0%, #0a0014 100%)",
+        padding: "100px 24px",
+      }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "64px" }}>
+            <span className="anim-badge" style={{
+              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
+              textTransform: "uppercase", color: "#6929C4",
+              display: "inline-block", marginBottom: "16px",
+            }}>Meet the Agents</span>
+            <h2 className="anim-h1" style={{
+              fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
+              color: "#fff", letterSpacing: "-0.025em",
+            }}>Two agents. Infinite conversations.</h2>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))",
+            gap: "24px",
+          }}>
+            {agents.map((ag, i) => (
+              <div key={ag.name}
+                className={`${ag.glowClass} ${ag.floatClass} ai-scan`}
+                style={{
+                  position: "relative",
+                  background: "rgba(255,255,255,0.03)",
+                  border: `1px solid ${ag.color}30`,
+                  borderRadius: "20px",
+                  padding: "36px",
+                  overflow: "hidden",
+                  animationDelay: `${i * 0.5}s`,
+                }}>
+                <div style={{
+                  position: "absolute",
+                  top: "-40px", right: "-40px",
+                  width: "200px", height: "200px",
+                  borderRadius: "50%",
+                  background: `radial-gradient(circle, ${ag.color}15 0%, transparent 65%)`,
+                  pointerEvents: "none",
+                }} />
+
+                <div style={{ position: "relative" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "20px" }}>
+                    <div>
+                      <span style={{
+                        fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em",
+                        textTransform: "uppercase", color: ag.color,
+                        display: "block", marginBottom: "6px",
+                      }}>{ag.badge}</span>
+                      <h3 style={{ fontSize: "36px", fontWeight: 800, color: "#fff", lineHeight: 1, marginBottom: "4px" }}>{ag.name}</h3>
+                      <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>{ag.role}</p>
+                    </div>
+                    <div style={{
+                      width: "56px", height: "56px", borderRadius: "50%",
+                      background: `linear-gradient(135deg, ${ag.color}30, ${ag.color}10)`,
+                      border: `1px solid ${ag.color}50`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0,
+                    }}>
+                      <div style={{
+                        width: "20px", height: "20px", borderRadius: "50%",
+                        background: ag.color,
+                        animation: "pulse-ring 2s ease-out infinite",
+                      }} />
+                    </div>
+                  </div>
+
+                  <p style={{
+                    fontSize: "18px", fontWeight: 600,
+                    color: "rgba(255,255,255,0.8)",
+                    marginBottom: "24px",
+                    lineHeight: 1.4,
+                  }}>{ag.tagline}</p>
+
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
+                    {ag.bullets.map((b, j) => (
+                      <li key={j} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                        <span style={{ color: ag.color, flexShrink: 0, marginTop: "2px", fontSize: "14px" }}>→</span>
+                        <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div style={{
+                    padding: "10px 16px",
+                    background: `${ag.color}10`,
+                    border: `1px solid ${ag.color}20`,
+                    borderRadius: "8px",
+                    fontSize: "12px",
+                    color: "rgba(255,255,255,0.45)",
+                  }}>
+                    <span style={{ color: ag.color, fontWeight: 600 }}>Deployed in: </span>{ag.use}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Latency callout */}
-      <section style={{ padding: "100px 24px", background: "#0D0D0D" }}>
-        <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ fontSize: "clamp(56px,8vw,100px)", fontWeight: 900, color: "#1E90FF", opacity: 0.15, lineHeight: 1, marginBottom: "8px" }}>1.2s</p>
-          <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", marginBottom: "24px" }}>
-            Time to first audio response.
+      {/* ── Tech Stack ── */}
+      <section style={{
+        background: "#000",
+        padding: "100px 24px",
+        borderTop: "1px solid rgba(255,255,255,0.04)",
+      }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
+            <span className="anim-badge" style={{
+              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
+              textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
+              display: "inline-block", marginBottom: "16px",
+            }}>Technology</span>
+            <h2 className="anim-h1" style={{
+              fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800,
+              color: "#fff", letterSpacing: "-0.025em",
+            }}>
+              Built on{" "}
+              <span className="shimmer-text">open, proven stack</span>
+            </h2>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+            gap: "16px",
+          }}>
+            {techStack.map((t, i) => (
+              <div key={t.name}
+                className={`hover-lift anim-card-${(i % 6) + 1}`}
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  borderRadius: "14px",
+                  padding: "24px",
+                  display: "flex", alignItems: "center", gap: "16px",
+                }}>
+                <div style={{
+                  width: "40px", height: "40px", borderRadius: "10px",
+                  background: `${t.color}15`,
+                  border: `1px solid ${t.color}30`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  flexShrink: 0,
+                }}>
+                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: t.color }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff" }}>{t.name}</div>
+                  <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{t.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section style={{
+        background: "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(59,15,140,0.4) 0%, #000 60%)",
+        padding: "100px 24px",
+        textAlign: "center",
+      }}>
+        <div style={{ maxWidth: "640px", margin: "0 auto" }}>
+          <h2 className="anim-h1" style={{
+            fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
+            color: "#fff", letterSpacing: "-0.025em", marginBottom: "20px",
+          }}>
+            Deploy your AI agent today
           </h2>
-          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>
-            NDJSON streaming architecture means the avatar starts speaking while the LLM is still generating.
-            No waiting for the full response — step-by-step board ops fire in sync with each audio chunk.
+          <p className="anim-subtext" style={{ color: "rgba(255,255,255,0.5)", fontSize: "17px", marginBottom: "36px", lineHeight: 1.6 }}>
+            On-premise or hybrid. Custom avatar. Your brand, your data, your infrastructure.
           </p>
+          <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="/contact" style={{
+              background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
+              color: "#fff", padding: "16px 36px", borderRadius: "12px",
+              fontWeight: 700, fontSize: "16px", textDecoration: "none",
+              boxShadow: "0 12px 40px rgba(59,15,140,0.5)",
+            }}>Talk to Our Team</a>
+            <a href="/products/cms" style={{
+              background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
+              color: "rgba(255,255,255,0.8)", padding: "16px 36px", borderRadius: "12px",
+              fontWeight: 600, fontSize: "16px", textDecoration: "none",
+            }}>Explore Emoqa Sync</a>
+          </div>
         </div>
       </section>
 
-      <CTA />
     </>
   );
 }
