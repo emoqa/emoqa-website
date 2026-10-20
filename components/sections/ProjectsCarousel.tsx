@@ -190,24 +190,30 @@ export default function ProjectsCarousel() {
           </div>
         </div>
 
-        {/* Dots nav */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginTop: "36px" }}>
+        {/* Product tab nav */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "12px", marginTop: "36px", flexWrap: "wrap" }}>
           {projects.map((proj, i) => (
             <button
               key={proj.name}
               onClick={() => goTo(i)}
-              aria-label={proj.name}
               style={{
-                width: i === current ? "28px" : "8px",
-                height: "8px",
-                borderRadius: "999px",
-                background: i === current ? projects[i].accent : "rgba(0,0,0,0.15)",
-                border: "none",
+                display: "flex", alignItems: "center", gap: "8px",
+                padding: "10px 22px", borderRadius: "999px",
+                background: i === current ? proj.accent : "transparent",
+                border: `1.5px solid ${i === current ? proj.accent : "rgba(0,0,0,0.12)"}`,
+                color: i === current ? "#fff" : "#6E6E73",
+                fontSize: "13px", fontWeight: 600,
                 cursor: "pointer",
-                padding: 0,
-                transition: "width 0.3s ease, background 0.3s ease",
+                transition: "all 0.25s ease",
               }}
-            />
+            >
+              <span style={{
+                width: "7px", height: "7px", borderRadius: "50%", flexShrink: 0,
+                background: i === current ? "rgba(255,255,255,0.7)" : proj.accent,
+                transition: "background 0.25s ease",
+              }} />
+              {proj.name}
+            </button>
           ))}
         </div>
       </div>
