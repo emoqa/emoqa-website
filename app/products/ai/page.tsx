@@ -1,59 +1,76 @@
 import NeuralCanvas from "@/components/ai/NeuralCanvas";
-import PipelineFlow from "@/components/ai/PipelineFlow";
+import AIOrb from "@/components/ai/AIOrb";
+import ChatDemo from "@/components/ai/ChatDemo";
 
-const techStack = [
-  { name: "Ollama", sub: "qwen3:14b local LLM", color: "#6929C4" },
-  { name: "Qdrant", sub: "Vector DB + RAG", color: "#1E90FF" },
-  { name: "Whisper", sub: "OpenAI ASR / VAD", color: "#6929C4" },
-  { name: "VRM", sub: "3D Avatar Runtime", color: "#1E90FF" },
-  { name: "FastAPI", sub: "Python backend", color: "#6929C4" },
-  { name: "React 19", sub: "Frontend + WebGL", color: "#1E90FF" },
-  { name: "NDJSON", sub: "Streaming pipeline", color: "#6929C4" },
-  { name: "Claude Haiku", sub: "Fallback LLM tier", color: "#1E90FF" },
+const benefits = [
+  {
+    icon: "⚡",
+    headline: "Answers in 1.2 seconds",
+    body: "Customers never wait. Your AI agent speaks before a human could even reach for a microphone — keeping every visitor engaged from the first word.",
+    color: "#6929C4",
+  },
+  {
+    icon: "🌐",
+    headline: "Every language, instantly",
+    body: "Hindi, English, Marathi, Tamil — your agent switches without prompting. No language is a barrier between you and a sale.",
+    color: "#1E90FF",
+  },
+  {
+    icon: "🔒",
+    headline: "Your data stays yours",
+    body: "Fully on-premise. No conversation ever leaves your building. No monthly API fees. One deployment, yours forever.",
+    color: "#6929C4",
+  },
 ];
 
 const agents = [
   {
     name: "Bubly",
-    role: "Education AI Agent",
-    tagline: "Personalized learning in every language",
-    color: "#6929C4",
-    glowClass: "glow-card-purple",
-    floatClass: "float-1",
-    bullets: [
-      "Curriculum-aware Q&A with RAG-powered context retrieval",
-      "Adaptive difficulty — adjusts to student comprehension in real time",
-      "Multi-language support: Hindi, English, Marathi, and more",
-      "Voice-first interface with animated VRM teacher avatar",
-      "Session memory: tracks what students struggle with across sessions",
+    badge: "For Education",
+    tagline: "Students ask. Bubly answers — every time.",
+    body: "Your institution can serve hundreds of students simultaneously without hiring more staff. Bubly knows your entire syllabus, adapts to each student's level, and never gets tired of the same question.",
+    outcomes: [
+      "Reduce faculty workload by up to 60%",
+      "Students get answers at 2am before exams",
+      "Tracks gaps and flags struggling students to teachers",
+      "Available in any language your students speak",
     ],
-    use: "EdTech, schools, digital classrooms",
-    badge: "Agent 01",
+    color: "#6929C4",
+    glow: "glow-card-purple",
+    float: "float-1",
+    badge2: "EdTech · Schools · Coaching Centres",
   },
   {
     name: "Aria",
-    role: "Sales & Customer AI Agent",
-    tagline: "Convert visitors into customers — 24/7",
-    color: "#1E90FF",
-    glowClass: "glow-card-blue",
-    floatClass: "float-2",
-    bullets: [
-      "Product-aware conversations from your custom knowledge base",
-      "Lead capture, qualification, and CRM hand-off",
-      "Objection handling with pre-loaded competitor knowledge",
-      "Appointment booking integration via calendar APIs",
-      "Post-call transcripts and sentiment scoring",
+    badge: "For Sales & Retail",
+    tagline: "Walk-ins become sales. Every time. 24/7.",
+    body: "Aria knows every product in your catalogue, handles objections, and captures lead details — without a single human on the floor. Deploy her in your showroom, kiosk, or website.",
+    outcomes: [
+      "Captures leads even when your store is closed",
+      "Knows specs, pricing, and comparisons instantly",
+      "Hands off hot leads to your team automatically",
+      "Deployed and live at aBet Technology, Pune",
     ],
-    use: "Retail, real estate, B2B sales floors",
-    badge: "Agent 02",
+    color: "#1E90FF",
+    glow: "glow-card-blue",
+    float: "float-2",
+    badge2: "Retail · Real Estate · B2B Showrooms",
   },
 ];
 
-const metrics = [
-  { value: "1.2s", label: "First audio response", sub: "NDJSON streaming pipeline" },
-  { value: "100%", label: "On-premise capable", sub: "No cloud dependency required" },
-  { value: "qwen3:14b", label: "Primary LLM", sub: "14B parameter local model" },
-  { value: "< 50ms", label: "VAD latency", sub: "Silero voice detection" },
+const industries = [
+  { name: "Electronics", example: "\"What's the difference between these two laptops?\"", color: "#6929C4" },
+  { name: "Real Estate", example: "\"Show me 2BHK options under ₹60L in Pune\"", color: "#1E90FF" },
+  { name: "EdTech", example: "\"Explain photosynthesis in Hindi\"", color: "#6929C4" },
+  { name: "Healthcare", example: "\"What documents do I need for admission?\"", color: "#1E90FF" },
+  { name: "Hospitality", example: "\"Book a table for 4 on Saturday\"", color: "#6929C4" },
+  { name: "Finance", example: "\"What's the EMI on a ₹10L loan?\"", color: "#1E90FF" },
+];
+
+const steps = [
+  { n: "01", title: "We learn your business", body: "Share your product catalogue, FAQs, and pricing. We train the AI on your exact knowledge — nothing generic." },
+  { n: "02", title: "We deploy your agent", body: "Hardware, software, avatar customisation — all handled. You go live in 3–5 days. No IT team required." },
+  { n: "03", title: "Leads start flowing", body: "Every conversation is logged. You get daily summaries, hot lead alerts, and full transcripts. Zero effort." },
 ];
 
 export default function AIPage() {
@@ -63,246 +80,260 @@ export default function AIPage() {
       <section style={{
         position: "relative",
         minHeight: "100svh",
-        background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,15,140,0.55) 0%, #000510 55%, #000 100%)",
+        background: "radial-gradient(ellipse 90% 70% at 50% -5%, rgba(59,15,140,0.6) 0%, #000510 50%, #000 100%)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        padding: "80px 24px 60px",
+        padding: "100px 24px 60px",
       }}>
-        {/* Neural canvas background */}
-        <div style={{ position: "absolute", inset: 0, opacity: 0.55 }}>
+        {/* Neural network background */}
+        <div style={{ position: "absolute", inset: 0, opacity: 0.6 }}>
           <NeuralCanvas style={{ width: "100%", height: "100%" }} />
         </div>
 
-        {/* Central glow */}
         <div style={{
-          position: "absolute",
-          top: "40%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "600px", height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59,15,140,0.25) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }} />
-
-        <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: "800px" }}>
-          <div className="anim-badge" style={{
-            display: "inline-flex", alignItems: "center", gap: "8px",
-            background: "rgba(59,15,140,0.25)", border: "1px solid rgba(105,41,196,0.5)",
-            borderRadius: "999px", padding: "6px 18px",
-            marginBottom: "28px",
-          }}>
-            <span style={{
-              width: "6px", height: "6px", borderRadius: "50%",
-              background: "#6929C4",
-              animation: "pulse-ring 1.8s ease-out infinite",
-              display: "inline-block",
-            }} />
-            <span style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.7)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              AI Agent Suite
-            </span>
-          </div>
-
-          <h1 className="anim-h1 shimmer-text" style={{
-            fontSize: "clamp(40px, 6vw, 80px)",
-            fontWeight: 800,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-            marginBottom: "24px",
-          }}>
-            Intelligence with a Face
-          </h1>
-
-          <p className="anim-subtext" style={{
-            fontSize: "clamp(16px, 2vw, 20px)",
-            color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.7,
-            marginBottom: "40px",
-            maxWidth: "580px",
-            margin: "0 auto 40px",
-          }}>
-            Fully on-premise conversational AI agents with photorealistic 3D avatars.
-            Voice in, voice out. 1.2 second first response. Zero cloud dependency.
-          </p>
-
-          <div className="anim-card-1" style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="/contact" style={{
-              background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
-              color: "#fff", padding: "14px 32px", borderRadius: "10px",
-              fontWeight: 700, fontSize: "15px", textDecoration: "none",
-              boxShadow: "0 8px 32px rgba(59,15,140,0.4)",
-            }}>Request a Demo</a>
-            <a href="#pipeline" style={{
-              background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
-              color: "rgba(255,255,255,0.8)", padding: "14px 32px", borderRadius: "10px",
-              fontWeight: 600, fontSize: "15px", textDecoration: "none",
-            }}>See How It Works</a>
-          </div>
-        </div>
-
-        {/* Metrics strip */}
-        <div className="anim-card-2" style={{
           position: "relative", zIndex: 1,
-          marginTop: "64px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-          gap: "1px",
-          background: "rgba(255,255,255,0.06)",
-          border: "1px solid rgba(255,255,255,0.08)",
-          borderRadius: "16px",
-          overflow: "hidden",
+          gridTemplateColumns: "1fr auto",
+          gap: "60px",
+          maxWidth: "1100px",
           width: "100%",
-          maxWidth: "760px",
+          alignItems: "center",
         }}>
-          {metrics.map((m, i) => (
-            <div key={i} style={{
-              padding: "24px 20px",
-              background: "rgba(0,5,16,0.6)",
-              textAlign: "center",
+          {/* Left: Copy */}
+          <div>
+            <div className="anim-badge" style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: "rgba(59,15,140,0.3)", border: "1px solid rgba(105,41,196,0.4)",
+              borderRadius: "999px", padding: "6px 16px", marginBottom: "28px",
             }}>
-              <div style={{
-                fontSize: "26px", fontWeight: 800,
-                color: i % 2 === 0 ? "#6929C4" : "#1E90FF",
-                letterSpacing: "-0.02em", marginBottom: "4px",
-              }}>{m.value}</div>
-              <div style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.7)", marginBottom: "2px" }}>{m.label}</div>
-              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>{m.sub}</div>
+              <span style={{
+                width: "6px", height: "6px", borderRadius: "50%",
+                background: "#6929C4", display: "inline-block",
+                animation: "pulse-ring 1.8s ease-out infinite",
+              }} />
+              <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>
+                AI Agent Suite — Emoqa
+              </span>
             </div>
-          ))}
+
+            <h1 className="anim-h1" style={{
+              fontSize: "clamp(36px, 5.5vw, 72px)",
+              fontWeight: 900,
+              lineHeight: 1.08,
+              letterSpacing: "-0.04em",
+              color: "#fff",
+              marginBottom: "24px",
+            }}>
+              Your AI employee.{" "}
+              <span className="shimmer-text">Never sleeps.</span>{" "}
+              <br />Always selling.
+            </h1>
+
+            <p className="anim-subtext" style={{
+              fontSize: "18px",
+              color: "rgba(255,255,255,0.5)",
+              lineHeight: 1.75,
+              marginBottom: "36px",
+              maxWidth: "500px",
+            }}>
+              A photorealistic AI agent that speaks to your customers, answers every question, and captures every lead — on your kiosk, showroom floor, or website. Deployed in 5 days.
+            </p>
+
+            <div className="anim-card-1" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "48px" }}>
+              <a href="/contact" style={{
+                background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
+                color: "#fff", padding: "14px 30px", borderRadius: "10px",
+                fontWeight: 700, fontSize: "15px", textDecoration: "none",
+                boxShadow: "0 8px 28px rgba(59,15,140,0.5)",
+              }}>Book a Live Demo</a>
+              <a href="#agents" style={{
+                background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.8)", padding: "14px 30px", borderRadius: "10px",
+                fontWeight: 600, fontSize: "15px", textDecoration: "none",
+              }}>Meet the Agents</a>
+            </div>
+
+            {/* Proof pills */}
+            <div className="anim-card-2" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              {[
+                { v: "1.2s", l: "First response" },
+                { v: "24/7", l: "Always live" },
+                { v: "0 cloud", l: "On-premise" },
+              ].map(p => (
+                <div key={p.v} style={{
+                  padding: "8px 16px", borderRadius: "8px",
+                  background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)",
+                  display: "flex", gap: "8px", alignItems: "center",
+                }}>
+                  <span style={{ fontSize: "15px", fontWeight: 800, color: "#fff" }}>{p.v}</span>
+                  <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>{p.l}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Animated Orb */}
+          <div className="float-1 anim-card-3" style={{ display: "flex", justifyContent: "center" }}>
+            <AIOrb />
+          </div>
         </div>
       </section>
 
-      {/* ── Pipeline ── */}
-      <section id="pipeline" style={{
-        background: "#000510",
-        padding: "100px 24px",
-        borderTop: "1px solid rgba(255,255,255,0.05)",
-      }}>
+      {/* ── Benefits ── */}
+      <section style={{ background: "#000", padding: "90px 24px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "60px" }}>
-            <span className="anim-badge" style={{
-              display: "inline-block",
-              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
-              textTransform: "uppercase", color: "#1E90FF",
-              marginBottom: "16px",
-            }}>Response Pipeline</span>
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <h2 className="anim-h1" style={{
-              fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
-              color: "#fff", letterSpacing: "-0.025em", lineHeight: 1.15,
-              marginBottom: "16px",
+              fontSize: "clamp(26px, 4vw, 44px)", fontWeight: 800,
+              color: "#fff", letterSpacing: "-0.025em", marginBottom: "12px",
             }}>
-              Voice in.{" "}
-              <span style={{ color: "#1E90FF" }}>Avatar out.</span>
+              Built for results, not demos
             </h2>
-            <p className="anim-subtext" style={{ color: "rgba(255,255,255,0.45)", fontSize: "16px", maxWidth: "480px", margin: "0 auto" }}>
-              Six-stage streaming pipeline — each step overlaps to hit 1.2s first-response latency.
-            </p>
+            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "16px" }}>Three things that make the difference on day one.</p>
           </div>
 
-          <div className="anim-card-1" style={{ display: "flex", justifyContent: "center" }}>
-            <PipelineFlow />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px" }}>
+            {benefits.map((b, i) => (
+              <div key={b.headline}
+                className={`hover-lift anim-card-${i + 1}`}
+                style={{
+                  background: "rgba(255,255,255,0.025)",
+                  border: `1px solid ${b.color}20`,
+                  borderRadius: "18px",
+                  padding: "32px",
+                }}>
+                <div style={{
+                  width: "48px", height: "48px", borderRadius: "14px",
+                  background: `${b.color}15`, border: `1px solid ${b.color}25`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: "22px", marginBottom: "20px",
+                }}>{b.icon}</div>
+                <h3 style={{ fontSize: "20px", fontWeight: 800, color: "#fff", marginBottom: "10px", letterSpacing: "-0.02em" }}>
+                  {b.headline}
+                </h3>
+                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>{b.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── Agents ── */}
-      <section style={{
-        background: "linear-gradient(180deg, #000510 0%, #0a0014 100%)",
-        padding: "100px 24px",
-      }}>
+      <section id="agents" style={{ background: "linear-gradient(180deg, #000 0%, #050010 100%)", padding: "90px 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "64px" }}>
             <span className="anim-badge" style={{
-              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
-              textTransform: "uppercase", color: "#6929C4",
-              display: "inline-block", marginBottom: "16px",
-            }}>Meet the Agents</span>
+              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "#6929C4", display: "inline-block", marginBottom: "14px",
+            }}>Two agents. One platform.</span>
             <h2 className="anim-h1" style={{
-              fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
+              fontSize: "clamp(26px, 4vw, 48px)", fontWeight: 800,
               color: "#fff", letterSpacing: "-0.025em",
-            }}>Two agents. Infinite conversations.</h2>
+            }}>Pick your use case. Deploy in days.</h2>
           </div>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(440px, 1fr))",
-            gap: "24px",
-          }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
             {agents.map((ag, i) => (
               <div key={ag.name}
-                className={`${ag.glowClass} ${ag.floatClass} ai-scan`}
+                className={`${ag.glow} ai-scan`}
                 style={{
                   position: "relative",
-                  background: "rgba(255,255,255,0.03)",
-                  border: `1px solid ${ag.color}30`,
-                  borderRadius: "20px",
-                  padding: "36px",
+                  background: "rgba(255,255,255,0.025)",
+                  border: `1px solid ${ag.color}25`,
+                  borderRadius: "22px",
+                  padding: "44px",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "48px",
+                  alignItems: "center",
                   overflow: "hidden",
-                  animationDelay: `${i * 0.5}s`,
                 }}>
+                {/* Background tint */}
                 <div style={{
                   position: "absolute",
-                  top: "-40px", right: "-40px",
-                  width: "200px", height: "200px",
-                  borderRadius: "50%",
-                  background: `radial-gradient(circle, ${ag.color}15 0%, transparent 65%)`,
+                  top: i === 0 ? "-60px" : "auto",
+                  bottom: i === 1 ? "-60px" : "auto",
+                  right: "-60px",
+                  width: "300px", height: "300px", borderRadius: "50%",
+                  background: `radial-gradient(circle, ${ag.color}10 0%, transparent 65%)`,
                   pointerEvents: "none",
                 }} />
 
                 <div style={{ position: "relative" }}>
-                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "20px" }}>
-                    <div>
-                      <span style={{
-                        fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em",
-                        textTransform: "uppercase", color: ag.color,
-                        display: "block", marginBottom: "6px",
-                      }}>{ag.badge}</span>
-                      <h3 style={{ fontSize: "36px", fontWeight: 800, color: "#fff", lineHeight: 1, marginBottom: "4px" }}>{ag.name}</h3>
-                      <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>{ag.role}</p>
-                    </div>
-                    <div style={{
-                      width: "56px", height: "56px", borderRadius: "50%",
-                      background: `linear-gradient(135deg, ${ag.color}30, ${ag.color}10)`,
-                      border: `1px solid ${ag.color}50`,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      flexShrink: 0,
-                    }}>
-                      <div style={{
-                        width: "20px", height: "20px", borderRadius: "50%",
-                        background: ag.color,
-                        animation: "pulse-ring 2s ease-out infinite",
-                      }} />
-                    </div>
+                  <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "16px" }}>
+                    <span style={{
+                      padding: "4px 12px", borderRadius: "999px",
+                      background: `${ag.color}15`, border: `1px solid ${ag.color}30`,
+                      fontSize: "11px", fontWeight: 700, color: ag.color,
+                      letterSpacing: "0.06em", textTransform: "uppercase",
+                    }}>{ag.badge}</span>
                   </div>
+                  <h3 style={{
+                    fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 900,
+                    color: "#fff", lineHeight: 1, marginBottom: "8px", letterSpacing: "-0.04em",
+                  }}>{ag.name}</h3>
+                  <p style={{ fontSize: "20px", fontWeight: 600, color: ag.color, marginBottom: "16px", lineHeight: 1.3 }}>
+                    {ag.tagline}
+                  </p>
+                  <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, marginBottom: "28px" }}>
+                    {ag.body}
+                  </p>
 
-                  <p style={{
-                    fontSize: "18px", fontWeight: 600,
-                    color: "rgba(255,255,255,0.8)",
-                    marginBottom: "24px",
-                    lineHeight: 1.4,
-                  }}>{ag.tagline}</p>
-
-                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
-                    {ag.bullets.map((b, j) => (
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" }}>
+                    {ag.outcomes.map((o, j) => (
                       <li key={j} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-                        <span style={{ color: ag.color, flexShrink: 0, marginTop: "2px", fontSize: "14px" }}>→</span>
-                        <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{b}</span>
+                        <span style={{
+                          width: "18px", height: "18px", borderRadius: "50%", flexShrink: 0,
+                          background: `${ag.color}20`, border: `1px solid ${ag.color}40`,
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          fontSize: "9px", marginTop: "1px", color: ag.color,
+                        }}>✓</span>
+                        <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>{o}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div style={{
-                    padding: "10px 16px",
-                    background: `${ag.color}10`,
-                    border: `1px solid ${ag.color}20`,
-                    borderRadius: "8px",
-                    fontSize: "12px",
-                    color: "rgba(255,255,255,0.45)",
-                  }}>
-                    <span style={{ color: ag.color, fontWeight: 600 }}>Deployed in: </span>{ag.use}
+                  <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
+                    <span style={{ color: ag.color }}>Sectors: </span>{ag.badge2}
                   </div>
+                </div>
+
+                {/* Right: Chat Demo (Aria only) or stats visual */}
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  {ag.name === "Aria" ? (
+                    <ChatDemo />
+                  ) : (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "14px", width: "100%", maxWidth: "380px" }}>
+                      {[
+                        { q: "Explain Newton's 3rd law", t: "Physics · Grade 10", c: "#6929C4" },
+                        { q: "मेरी परीक्षा कल है, क्या मुझे…", t: "Hindi Medium · Just now", c: "#6929C4" },
+                        { q: "Photosynthesis diagram please", t: "Biology · 2 min ago", c: "#6929C4" },
+                        { q: "Chemical bonds — ELI5", t: "Chemistry · 5 min ago", c: "#1E90FF" },
+                      ].map((card, j) => (
+                        <div key={j}
+                          className={`hover-lift anim-card-${j + 1}`}
+                          style={{
+                            background: "rgba(255,255,255,0.04)",
+                            border: "1px solid rgba(255,255,255,0.07)",
+                            borderRadius: "12px", padding: "14px 18px",
+                            display: "flex", justifyContent: "space-between", alignItems: "center",
+                          }}>
+                          <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)" }}>{card.q}</span>
+                          <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", textAlign: "right", flexShrink: 0, marginLeft: "12px" }}>{card.t}</span>
+                        </div>
+                      ))}
+                      <div style={{
+                        padding: "10px 18px", borderRadius: "10px",
+                        background: "rgba(105,41,196,0.08)", border: "1px solid rgba(105,41,196,0.15)",
+                        fontSize: "12px", color: "rgba(255,255,255,0.35)", textAlign: "center",
+                      }}>
+                        Bubly handled <span style={{ color: "#6929C4", fontWeight: 700 }}>847 questions</span> today
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -310,56 +341,68 @@ export default function AIPage() {
         </div>
       </section>
 
-      {/* ── Tech Stack ── */}
-      <section style={{
-        background: "#000",
-        padding: "100px 24px",
-        borderTop: "1px solid rgba(255,255,255,0.04)",
-      }}>
+      {/* ── How it works ── */}
+      <section style={{ background: "#000510", padding: "90px 24px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
-            <span className="anim-badge" style={{
-              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
-              textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
-              display: "inline-block", marginBottom: "16px",
-            }}>Technology</span>
             <h2 className="anim-h1" style={{
-              fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 800,
-              color: "#fff", letterSpacing: "-0.025em",
-            }}>
-              Built on{" "}
-              <span className="shimmer-text">open, proven stack</span>
-            </h2>
+              fontSize: "clamp(26px, 4vw, 44px)", fontWeight: 800,
+              color: "#fff", letterSpacing: "-0.025em", marginBottom: "10px",
+            }}>From contract to live in 5 days</h2>
+            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "15px" }}>We do the heavy lifting. You show up on launch day.</p>
           </div>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-            gap: "16px",
-          }}>
-            {techStack.map((t, i) => (
-              <div key={t.name}
-                className={`hover-lift anim-card-${(i % 6) + 1}`}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2px", background: "rgba(255,255,255,0.04)", borderRadius: "18px", overflow: "hidden" }}>
+            {steps.map((s, i) => (
+              <div key={s.n}
+                className={`anim-card-${i + 1}`}
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  borderRadius: "14px",
-                  padding: "24px",
-                  display: "flex", alignItems: "center", gap: "16px",
+                  padding: "40px 32px",
+                  background: "#000510",
+                  position: "relative",
                 }}>
                 <div style={{
-                  width: "40px", height: "40px", borderRadius: "10px",
-                  background: `${t.color}15`,
-                  border: `1px solid ${t.color}30`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  flexShrink: 0,
+                  fontSize: "56px", fontWeight: 900, lineHeight: 1,
+                  color: "rgba(255,255,255,0.04)",
+                  marginBottom: "20px",
+                  letterSpacing: "-0.04em",
+                }}>{s.n}</div>
+                <h3 style={{ fontSize: "19px", fontWeight: 800, color: "#fff", marginBottom: "10px", letterSpacing: "-0.02em" }}>{s.title}</h3>
+                <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Industries ── */}
+      <section style={{ background: "#000", padding: "90px 24px" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2 className="anim-h1" style={{
+              fontSize: "clamp(26px, 4vw, 44px)", fontWeight: 800,
+              color: "#fff", letterSpacing: "-0.025em", marginBottom: "10px",
+            }}>Works in any industry</h2>
+            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "15px" }}>Real questions your customers are already asking.</p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "16px" }}>
+            {industries.map((ind, i) => (
+              <div key={ind.name}
+                className={`hover-lift anim-card-${(i % 6) + 1}`}
+                style={{
+                  background: "rgba(255,255,255,0.025)",
+                  border: `1px solid ${ind.color}18`,
+                  borderRadius: "16px", padding: "24px 26px",
                 }}>
-                  <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: t.color }} />
-                </div>
-                <div>
-                  <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff" }}>{t.name}</div>
-                  <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{t.sub}</div>
-                </div>
+                <div style={{
+                  fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em",
+                  textTransform: "uppercase", color: ind.color, marginBottom: "10px",
+                }}>{ind.name}</div>
+                <p style={{
+                  fontSize: "14px", color: "rgba(255,255,255,0.5)",
+                  fontStyle: "italic", lineHeight: 1.6,
+                }}>{ind.example}</p>
               </div>
             ))}
           </div>
@@ -368,19 +411,30 @@ export default function AIPage() {
 
       {/* ── CTA ── */}
       <section style={{
-        background: "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(59,15,140,0.4) 0%, #000 60%)",
+        background: "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(59,15,140,0.45) 0%, #000 55%)",
         padding: "100px 24px",
         textAlign: "center",
+        borderTop: "1px solid rgba(255,255,255,0.04)",
       }}>
-        <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-          <h2 className="anim-h1" style={{
-            fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
-            color: "#fff", letterSpacing: "-0.025em", marginBottom: "20px",
+        <div style={{ maxWidth: "620px", margin: "0 auto" }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            marginBottom: "24px",
+            padding: "6px 16px", borderRadius: "999px",
+            background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
           }}>
-            Deploy your AI agent today
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#00D084", display: "inline-block", boxShadow: "0 0 5px #00D084" }} />
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>Available for deployment now</span>
+          </div>
+
+          <h2 className="anim-h1" style={{
+            fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900,
+            color: "#fff", letterSpacing: "-0.035em", marginBottom: "18px", lineHeight: 1.1,
+          }}>
+            Ready to see it in your business?
           </h2>
-          <p className="anim-subtext" style={{ color: "rgba(255,255,255,0.5)", fontSize: "17px", marginBottom: "36px", lineHeight: 1.6 }}>
-            On-premise or hybrid. Custom avatar. Your brand, your data, your infrastructure.
+          <p className="anim-subtext" style={{ color: "rgba(255,255,255,0.45)", fontSize: "17px", marginBottom: "36px", lineHeight: 1.65 }}>
+            We&apos;ll demo Aria or Bubly live with your products, your questions, your language. Takes 30 minutes. No commitment.
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/contact" style={{
@@ -388,16 +442,15 @@ export default function AIPage() {
               color: "#fff", padding: "16px 36px", borderRadius: "12px",
               fontWeight: 700, fontSize: "16px", textDecoration: "none",
               boxShadow: "0 12px 40px rgba(59,15,140,0.5)",
-            }}>Talk to Our Team</a>
-            <a href="/products/cms" style={{
-              background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
-              color: "rgba(255,255,255,0.8)", padding: "16px 36px", borderRadius: "12px",
+            }}>Book a Free Demo</a>
+            <a href="https://wa.me/917400040673?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Emoqa%20AI%20Agents" style={{
+              background: "rgba(37,211,102,0.12)", border: "1px solid rgba(37,211,102,0.3)",
+              color: "#25D366", padding: "16px 36px", borderRadius: "12px",
               fontWeight: 600, fontSize: "16px", textDecoration: "none",
-            }}>Explore Emoqa Sync</a>
+            }}>WhatsApp Us</a>
           </div>
         </div>
       </section>
-
     </>
   );
 }
