@@ -1,130 +1,100 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { PenTool, Languages, ShoppingBag, TrendingUp, Mic, Bot } from "lucide-react";
 import CTA from "@/components/sections/CTA";
 
 const teacherFeatures = [
-  { icon: PenTool, title: "Draws in Real Time", desc: "Explains concepts by drawing diagrams, highlighting text, and annotating just like a human teacher on a whiteboard." },
-  { icon: Languages, title: "Multilingual", desc: "Speaks and understands 20+ languages. Switches mid-conversation based on the student's preference." },
-  { icon: Mic, title: "Voice-First", desc: "Natural conversational voice — not robotic TTS. Students speak, the AI listens and responds contextually." },
+  { num: "01", title: "Draws in Real Time", desc: "Explains concepts by drawing diagrams, highlighting text, and annotating just like a human teacher on a whiteboard." },
+  { num: "02", title: "Multilingual", desc: "Speaks and understands 20+ languages. Switches mid-conversation based on the student's preference." },
+  { num: "03", title: "Voice-First", desc: "Natural conversational voice — not robotic TTS. Students speak, the AI listens and responds contextually." },
 ];
 
 const salesFeatures = [
-  { icon: ShoppingBag, title: "Product Showcase", desc: "Shows 3D models, images, videos of products. Demonstrates features interactively on command." },
-  { icon: TrendingUp, title: "Negotiation AI", desc: "Trained to handle pricing conversations, objections, and deal-closing within configured guardrails." },
-  { icon: Bot, title: "Knows Your Catalogue", desc: "Upload your entire product database — the agent knows specs, pricing, comparisons, and pros/cons for everything." },
+  { num: "01", title: "Product Showcase", desc: "Shows 3D models, images, and videos of products. Demonstrates features interactively on command." },
+  { num: "02", title: "Negotiation AI", desc: "Trained to handle pricing conversations, objections, and deal-closing within configured guardrails." },
+  { num: "03", title: "Knows Your Catalogue", desc: "Upload your entire product database — the agent knows specs, pricing, comparisons, and pros/cons for everything." },
 ];
 
 export default function AIPage() {
   return (
     <>
-      <section className="pt-36 pb-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8"
-            style={{ background: "rgba(30,144,255,0.08)", color: "#1E90FF", border: "1px solid rgba(30,144,255,0.2)" }}
-          >
+      {/* Hero */}
+      <section style={{ paddingTop: "140px", paddingBottom: "100px", paddingLeft: "24px", paddingRight: "24px", background: "#fff" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center",
+            padding: "6px 18px", borderRadius: "999px",
+            background: "rgba(30,144,255,0.07)", color: "#1E90FF",
+            border: "1px solid rgba(30,144,255,0.2)",
+            fontSize: "13px", fontWeight: 600,
+            marginBottom: "32px",
+          }}>
             Flagship Product
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[clamp(40px,6vw,72px)] font-bold tracking-tight leading-tight mb-6"
-          >
+          </div>
+          <h1 style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "28px" }}>
             <span style={{ background: "linear-gradient(135deg, #1E90FF, #3B0F8C)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               AI Agent Suite
             </span>
             <br />Intelligence That Works For You
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-[#6E6E73] leading-relaxed"
-          >
+          </h1>
+          <p style={{ fontSize: "20px", color: "#6E6E73", lineHeight: 1.7 }}>
             Two purpose-built AI agents — one that teaches, one that sells.
             Both speak your language, understand your domain, and work 24/7.
-          </motion.p>
+          </p>
         </div>
       </section>
 
       {/* AI Teacher */}
-      <section className="py-20 px-6" style={{ background: "#F5F5F7" }}>
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{ background: "rgba(30,144,255,0.1)", color: "#1E90FF" }}>
-              Agent 1
+      <section style={{ padding: "100px 24px", background: "#F5F5F7" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "48px" }}>
+            <span style={{
+              display: "inline-block", padding: "5px 14px", borderRadius: "999px",
+              fontSize: "12px", fontWeight: 700, letterSpacing: "0.06em",
+              background: "rgba(30,144,255,0.1)", color: "#1E90FF",
+              marginBottom: "16px",
+            }}>
+              Agent 01
             </span>
-            <h2 className="text-3xl font-bold mb-2">AI Teacher</h2>
-            <p className="text-[#6E6E73]">Explains anything. To anyone. In any language.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {teacherFeatures.map((f, i) => {
-              const Icon = f.icon;
-              return (
-                <motion.div
-                  key={f.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="p-6 rounded-2xl bg-white"
-                  style={{ border: "1px solid rgba(0,0,0,0.06)" }}
-                >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(30,144,255,0.08)" }}>
-                    <Icon size={20} style={{ color: "#1E90FF" }} />
-                  </div>
-                  <h3 className="font-bold text-base mb-2">{f.title}</h3>
-                  <p className="text-sm leading-relaxed text-[#6E6E73]">{f.desc}</p>
-                </motion.div>
-              );
-            })}
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#1D1D1F", marginBottom: "8px" }}>
+              AI Teacher
+            </h2>
+            <p style={{ fontSize: "18px", color: "#6E6E73" }}>Explains anything. To anyone. In any language.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+            {teacherFeatures.map((f) => (
+              <div key={f.title} style={{ padding: "40px 32px", background: "#F5F5F7" }}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(30,144,255,0.4)", marginBottom: "16px" }}>{f.num}</p>
+                <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px", letterSpacing: "-0.02em" }}>{f.title}</h3>
+                <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* AI Sales Agent */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{ background: "rgba(59,15,140,0.1)", color: "#3B0F8C" }}>
-              Agent 2
+      <section style={{ padding: "100px 24px", background: "#fff" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "48px" }}>
+            <span style={{
+              display: "inline-block", padding: "5px 14px", borderRadius: "999px",
+              fontSize: "12px", fontWeight: 700, letterSpacing: "0.06em",
+              background: "rgba(59,15,140,0.08)", color: "#3B0F8C",
+              marginBottom: "16px",
+            }}>
+              Agent 02
             </span>
-            <h2 className="text-3xl font-bold mb-2">AI Sales Agent</h2>
-            <p className="text-[#6E6E73]">Shows, explains, negotiates — closes the deal.</p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {salesFeatures.map((f, i) => {
-              const Icon = f.icon;
-              return (
-                <motion.div
-                  key={f.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="p-6 rounded-2xl"
-                  style={{ background: "#F5F5F7", border: "1px solid rgba(0,0,0,0.06)" }}
-                >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(59,15,140,0.08)" }}>
-                    <Icon size={20} style={{ color: "#3B0F8C" }} />
-                  </div>
-                  <h3 className="font-bold text-base mb-2">{f.title}</h3>
-                  <p className="text-sm leading-relaxed text-[#6E6E73]">{f.desc}</p>
-                </motion.div>
-              );
-            })}
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#1D1D1F", marginBottom: "8px" }}>
+              AI Sales Agent
+            </h2>
+            <p style={{ fontSize: "18px", color: "#6E6E73" }}>Shows, explains, negotiates — closes the deal.</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+            {salesFeatures.map((f) => (
+              <div key={f.title} style={{ padding: "40px 32px", background: "#fff" }}>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(59,15,140,0.3)", marginBottom: "16px" }}>{f.num}</p>
+                <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px", letterSpacing: "-0.02em" }}>{f.title}</h3>
+                <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

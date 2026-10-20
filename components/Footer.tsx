@@ -15,7 +15,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About Us", href: "/about" },
-    { label: "Portfolio", href: "/about#portfolio" },
+    { label: "Portfolio", href: "/about" },
     { label: "Careers", href: "/contact" },
     { label: "Contact", href: "/contact" },
   ],
@@ -23,39 +23,38 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t" style={{ borderColor: "rgba(0,0,0,0.08)", background: "#F5F5F7" }}>
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-10">
+    <footer style={{ background: "#F5F5F7", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "80px 24px 48px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "48px", marginBottom: "64px" }}>
           {/* Brand */}
-          <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <Image src="/logo.png" alt="Emoqa" width={32} height={32} className="object-contain" />
-              <span className="text-lg font-bold" style={{ color: "#3B0F8C" }}>emoqa</span>
+          <div>
+            <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", marginBottom: "20px" }}>
+              <Image src="/logo.png" alt="Emoqa" width={28} height={28} style={{ objectFit: "contain" }} />
+              <span style={{ fontSize: "17px", fontWeight: 700, color: "#3B0F8C", letterSpacing: "-0.02em" }}>emoqa</span>
             </Link>
-            <p className="text-sm leading-relaxed mb-6 max-w-xs" style={{ color: "#6E6E73" }}>
-              Where emotion meets excellence. Full-stack business solution company building hardware + software + AI products that change industries.
+            <p style={{ fontSize: "14px", color: "#6E6E73", lineHeight: 1.7, maxWidth: "240px", marginBottom: "24px" }}>
+              Where emotion meets excellence. Full-stack technology company building hardware, software, and AI products across industries.
             </p>
-            <p className="text-sm font-medium" style={{ color: "#1D1D1F" }}>
-              📧{" "}
-              <a href="mailto:hello@emoqa.in" className="hover:underline" style={{ color: "#3B0F8C" }}>
-                hello@emoqa.in
-              </a>
-            </p>
+            <a
+              href="mailto:hello@emoqa.in"
+              style={{ fontSize: "14px", fontWeight: 600, color: "#3B0F8C", textDecoration: "none" }}
+            >
+              hello@emoqa.in
+            </a>
           </div>
 
-          {/* Links */}
+          {/* Link columns */}
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#1D1D1F" }}>
+              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#1D1D1F", marginBottom: "20px" }}>
                 {group}
               </p>
-              <ul className="flex flex-col gap-3">
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "14px" }}>
                 {links.map((l) => (
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="text-sm hover:text-[#3B0F8C] transition-colors"
-                      style={{ color: "#6E6E73" }}
+                      style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}
                     >
                       {l.label}
                     </Link>
@@ -66,12 +65,18 @@ export default function Footer() {
           ))}
         </div>
 
-        <div
-          className="mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs"
-          style={{ borderTop: "1px solid rgba(0,0,0,0.08)", color: "#6E6E73" }}
-        >
+        {/* Bottom bar */}
+        <div style={{
+          paddingTop: "28px",
+          borderTop: "1px solid rgba(0,0,0,0.08)",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontSize: "13px",
+          color: "#6E6E73",
+        }}>
           <p>© {new Date().getFullYear()} Emoqa Technologies. All rights reserved.</p>
-          <p className="italic">where emotion meets excellence.</p>
+          <p style={{ fontStyle: "italic" }}>where emotion meets excellence.</p>
         </div>
       </div>
     </footer>

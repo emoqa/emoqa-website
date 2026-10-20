@@ -1,131 +1,103 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-
 export default function ContactPage() {
   return (
-    <section className="pt-36 pb-32 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section style={{ paddingTop: "140px", paddingBottom: "120px", paddingLeft: "24px", paddingRight: "24px", background: "#fff" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+
           {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#3B0F8C" }}>
+          <div>
+            <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
               Get in Touch
             </p>
-            <h1 className="text-[clamp(36px,5vw,60px)] font-bold tracking-tight leading-tight mb-6">
+            <h1 style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "24px" }}>
               Let&apos;s Build<br />
               <span className="gradient-text">Something Great.</span>
             </h1>
-            <p className="text-lg text-[#6E6E73] leading-relaxed mb-10">
-              Have a product idea? A problem that needs solving? Or just want to know if we can help?
-              Drop us a message — we reply within 24 hours.
+            <p style={{ fontSize: "18px", color: "#6E6E73", lineHeight: 1.7, marginBottom: "48px" }}>
+              Have a product idea? A problem that needs solving? Drop us a message — we reply within 24 hours.
             </p>
 
-            <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(59,15,140,0.08)" }}
-                >
-                  <Mail size={18} style={{ color: "#3B0F8C" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+              {[
+                { label: "Email", value: "hello@emoqa.in", href: "mailto:hello@emoqa.in" },
+                { label: "Location", value: "India — serving clients globally", href: null },
+                { label: "Response time", value: "Within 24 hours", href: null },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(0,0,0,0.3)", marginBottom: "6px" }}>
+                    {item.label}
+                  </p>
+                  {item.href ? (
+                    <a href={item.href} style={{ fontSize: "17px", fontWeight: 500, color: "#3B0F8C", textDecoration: "none" }}>
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p style={{ fontSize: "17px", fontWeight: 500, color: "#1D1D1F" }}>{item.value}</p>
+                  )}
                 </div>
-                <div>
-                  <p className="text-xs text-[#6E6E73] mb-0.5">Email</p>
-                  <a href="mailto:hello@emoqa.in" className="text-sm font-medium hover:underline" style={{ color: "#3B0F8C" }}>
-                    hello@emoqa.in
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(59,15,140,0.08)" }}
-                >
-                  <Phone size={18} style={{ color: "#3B0F8C" }} />
-                </div>
-                <div>
-                  <p className="text-xs text-[#6E6E73] mb-0.5">Phone</p>
-                  <a href="tel:+91" className="text-sm font-medium" style={{ color: "#1D1D1F" }}>
-                    Contact via email for business inquiries
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(59,15,140,0.08)" }}
-                >
-                  <MapPin size={18} style={{ color: "#3B0F8C" }} />
-                </div>
-                <div>
-                  <p className="text-xs text-[#6E6E73] mb-0.5">Location</p>
-                  <p className="text-sm font-medium" style={{ color: "#1D1D1F" }}>India — serving clients globally</p>
-                </div>
-              </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right — Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <div>
             <form
               action="mailto:hello@emoqa.in"
               method="POST"
               encType="text/plain"
-              className="flex flex-col gap-5 p-8 rounded-2xl"
-              style={{ background: "#F5F5F7", border: "1px solid rgba(0,0,0,0.06)" }}
+              style={{
+                display: "flex", flexDirection: "column", gap: "20px",
+                padding: "40px", borderRadius: "24px",
+                background: "#F5F5F7", border: "1px solid rgba(0,0,0,0.06)",
+              }}
             >
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-medium text-[#1D1D1F]">First Name</label>
-                  <input
-                    type="text"
-                    name="first_name"
-                    placeholder="Ronit"
-                    required
-                    className="px-4 py-3 rounded-xl text-sm bg-white outline-none focus:ring-2 transition"
-                    style={{ border: "1px solid rgba(0,0,0,0.1)", focusRingColor: "#3B0F8C" } as React.CSSProperties}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-medium text-[#1D1D1F]">Last Name</label>
-                  <input
-                    type="text"
-                    name="last_name"
-                    placeholder="Nandeshwar"
-                    required
-                    className="px-4 py-3 rounded-xl text-sm bg-white outline-none focus:ring-2 transition"
-                    style={{ border: "1px solid rgba(0,0,0,0.1)" }}
-                  />
-                </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                {[
+                  { name: "first_name", label: "First Name", placeholder: "Ronit" },
+                  { name: "last_name", label: "Last Name", placeholder: "Nandeshwar" },
+                ].map((f) => (
+                  <div key={f.name} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <label style={{ fontSize: "12px", fontWeight: 600, color: "#1D1D1F" }}>{f.label}</label>
+                    <input
+                      type="text"
+                      name={f.name}
+                      placeholder={f.placeholder}
+                      required
+                      style={{
+                        padding: "12px 16px", borderRadius: "12px",
+                        fontSize: "15px", background: "#fff",
+                        border: "1px solid rgba(0,0,0,0.1)", outline: "none",
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-medium text-[#1D1D1F]">Email</label>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <label style={{ fontSize: "12px", fontWeight: 600, color: "#1D1D1F" }}>Email</label>
                 <input
                   type="email"
                   name="email"
                   placeholder="you@company.com"
                   required
-                  className="px-4 py-3 rounded-xl text-sm bg-white outline-none focus:ring-2 transition"
-                  style={{ border: "1px solid rgba(0,0,0,0.1)" }}
+                  style={{
+                    padding: "12px 16px", borderRadius: "12px",
+                    fontSize: "15px", background: "#fff",
+                    border: "1px solid rgba(0,0,0,0.1)", outline: "none",
+                  }}
                 />
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-medium text-[#1D1D1F]">What are you building?</label>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <label style={{ fontSize: "12px", fontWeight: 600, color: "#1D1D1F" }}>What are you building?</label>
                 <select
                   name="type"
-                  className="px-4 py-3 rounded-xl text-sm bg-white outline-none focus:ring-2 transition appearance-none"
-                  style={{ border: "1px solid rgba(0,0,0,0.1)", color: "#6E6E73" }}
+                  style={{
+                    padding: "12px 16px", borderRadius: "12px",
+                    fontSize: "15px", background: "#fff",
+                    border: "1px solid rgba(0,0,0,0.1)", outline: "none",
+                    color: "#6E6E73", appearance: "none",
+                  }}
                 >
                   <option value="">Select a category</option>
                   <option value="hardware">Hardware Product</option>
@@ -138,27 +110,35 @@ export default function ContactPage() {
                 </select>
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-medium text-[#1D1D1F]">Tell us more</label>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <label style={{ fontSize: "12px", fontWeight: 600, color: "#1D1D1F" }}>Tell us more</label>
                 <textarea
                   name="message"
                   rows={4}
                   placeholder="Describe your idea, problem, or project..."
                   required
-                  className="px-4 py-3 rounded-xl text-sm bg-white outline-none focus:ring-2 transition resize-none"
-                  style={{ border: "1px solid rgba(0,0,0,0.1)" }}
+                  style={{
+                    padding: "12px 16px", borderRadius: "12px",
+                    fontSize: "15px", background: "#fff",
+                    border: "1px solid rgba(0,0,0,0.1)", outline: "none",
+                    resize: "none",
+                  }}
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
-                style={{ background: "#3B0F8C" }}
+                style={{
+                  padding: "15px 32px", borderRadius: "999px",
+                  background: "#3B0F8C", color: "#fff",
+                  fontSize: "15px", fontWeight: 700,
+                  border: "none", cursor: "pointer",
+                }}
               >
-                Send Message <ArrowRight size={14} />
+                Send Message
               </button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
