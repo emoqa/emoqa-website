@@ -1,81 +1,100 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden bg-white">
-      {/* Very subtle top glow */}
+    <section
+      className="relative flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-white"
+      style={{ minHeight: "100svh", paddingTop: "80px" }}
+    >
+      {/* Background glow */}
       <div
-        className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[600px] pointer-events-none"
+        aria-hidden
         style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(59,15,140,0.06) 0%, transparent 70%)",
+          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+          width: "900px", height: "600px", pointerEvents: "none",
+          background: "radial-gradient(ellipse at 50% 0%, rgba(59,15,140,0.07) 0%, transparent 65%)",
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-base font-medium tracking-wide mb-8"
-          style={{ color: "#6E6E73" }}
+      <div className="relative z-10" style={{ maxWidth: "900px" }}>
+        <p
+          className="anim-hero-1"
+          style={{ fontSize: "15px", fontWeight: 500, color: "#6E6E73", letterSpacing: "0.04em", marginBottom: "28px" }}
         >
           Where Emotion Meets Excellence
-        </motion.p>
+        </p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.08 }}
-          className="font-bold leading-[1.02] tracking-[-0.04em] mb-8"
-          style={{ fontSize: "clamp(52px, 9vw, 104px)", color: "#1D1D1F" }}
+        <h1
+          className="anim-hero-2"
+          style={{
+            fontSize: "clamp(56px, 9.5vw, 108px)",
+            fontWeight: 700,
+            lineHeight: 1.02,
+            letterSpacing: "-0.04em",
+            color: "#1D1D1F",
+            marginBottom: "28px",
+          }}
         >
-          We Build What
-          <br />
-          <span className="gradient-text">Others Call</span>
-          <br />
-          <span style={{ color: "#1D1D1F" }}>Impossible.</span>
-        </motion.h1>
+          We Build What<br />
+          <span className="gradient-text">Others Call</span><br />
+          Impossible.
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.18 }}
-          className="max-w-xl mx-auto mb-12 leading-relaxed"
-          style={{ fontSize: "clamp(17px, 2vw, 21px)", color: "#6E6E73" }}
+        <p
+          className="anim-hero-3"
+          style={{
+            fontSize: "clamp(18px, 2.2vw, 22px)",
+            color: "#6E6E73",
+            lineHeight: 1.6,
+            maxWidth: "520px",
+            margin: "0 auto 40px",
+          }}
         >
-          From Defence to Fortune 500s — hardware, software, AI, and everything
-          between. Your most ambitious idea, fully built.
-        </motion.p>
+          From Defence to Fortune 500s — hardware, software, AI,
+          and everything between. Your most ambitious idea, fully built.
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.28 }}
-          className="flex flex-wrap justify-center gap-4"
-        >
+        <div className="anim-hero-4" style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
           <Link
             href="/contact"
-            className="inline-flex items-center px-8 py-4 rounded-full text-white font-semibold text-base transition-all hover:opacity-90 active:scale-95"
-            style={{ background: "#3B0F8C" }}
+            style={{
+              display: "inline-flex", alignItems: "center",
+              padding: "14px 32px", borderRadius: "999px",
+              background: "#3B0F8C", color: "#fff",
+              fontWeight: 600, fontSize: "16px",
+              textDecoration: "none",
+              transition: "opacity 0.2s",
+            }}
           >
             Start a Project
           </Link>
           <Link
             href="/products/cms"
-            className="inline-flex items-center px-8 py-4 rounded-full font-semibold text-base transition-all hover:bg-gray-100 active:scale-95"
-            style={{ color: "#3B0F8C", border: "1.5px solid rgba(59,15,140,0.3)" }}
+            style={{
+              display: "inline-flex", alignItems: "center",
+              padding: "14px 32px", borderRadius: "999px",
+              color: "#3B0F8C", fontWeight: 600, fontSize: "16px",
+              border: "1.5px solid rgba(59,15,140,0.3)",
+              textDecoration: "none",
+              transition: "background 0.2s",
+            }}
           >
             Our Products
           </Link>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      {/* Scroll hint */}
+      <div
+        style={{
+          position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: "6px",
+          opacity: 0.35,
+        }}
+      >
+        <span style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#1D1D1F" }}>SCROLL</span>
+        <div style={{ width: "1px", height: "32px", background: "#1D1D1F" }} />
+      </div>
     </section>
   );
 }
