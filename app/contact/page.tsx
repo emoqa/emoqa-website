@@ -6,25 +6,26 @@ export default function ContactPage() {
 
           {/* Left */}
           <div>
-            <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+            <p className="anim-badge" style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
               Get in Touch
             </p>
-            <h1 style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "24px" }}>
+            <h1 className="anim-h1" style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "24px" }}>
               Let&apos;s Build<br />
               <span className="gradient-text">Something Great.</span>
             </h1>
-            <p style={{ fontSize: "18px", color: "#6E6E73", lineHeight: 1.7, marginBottom: "48px" }}>
+            <p className="anim-subtext" style={{ fontSize: "18px", color: "#6E6E73", lineHeight: 1.7, marginBottom: "48px" }}>
               Have a product idea? A problem that needs solving? Drop us a message — we reply within 24 hours.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
               {[
-                { label: "Email", value: "hello@emoqa.in", href: "mailto:hello@emoqa.in" },
-                { label: "Location", value: "India — serving clients globally", href: null },
-                { label: "Response time", value: "Within 24 hours", href: null },
+                { label: "Email", value: "sales@emoqa.in", href: "mailto:sales@emoqa.in" },
+                { label: "Phone / WhatsApp", value: "+91 7400040673", href: "https://wa.me/917400040673?text=Hi%20Emoqa!" },
+                { label: "Address", value: "Gokul Nagar, Katraj, Pune, Maharashtra, India", href: null },
+                { label: "Response Time", value: "Within 24 hours", href: null },
               ].map((item) => (
                 <div key={item.label}>
-                  <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(0,0,0,0.3)", marginBottom: "6px" }}>
+                  <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(0,0,0,0.28)", marginBottom: "6px" }}>
                     {item.label}
                   </p>
                   {item.href ? (
@@ -40,9 +41,9 @@ export default function ContactPage() {
           </div>
 
           {/* Right — Form */}
-          <div>
+          <div className="anim-card-2">
             <form
-              action="mailto:hello@emoqa.in"
+              action="mailto:sales@emoqa.in"
               method="POST"
               encType="text/plain"
               style={{
@@ -80,11 +81,7 @@ export default function ContactPage() {
                   name="email"
                   placeholder="you@company.com"
                   required
-                  style={{
-                    padding: "12px 16px", borderRadius: "12px",
-                    fontSize: "15px", background: "#fff",
-                    border: "1px solid rgba(0,0,0,0.1)", outline: "none",
-                  }}
+                  style={{ padding: "12px 16px", borderRadius: "12px", fontSize: "15px", background: "#fff", border: "1px solid rgba(0,0,0,0.1)", outline: "none" }}
                 />
               </div>
 
@@ -92,12 +89,7 @@ export default function ContactPage() {
                 <label style={{ fontSize: "12px", fontWeight: 600, color: "#1D1D1F" }}>What are you building?</label>
                 <select
                   name="type"
-                  style={{
-                    padding: "12px 16px", borderRadius: "12px",
-                    fontSize: "15px", background: "#fff",
-                    border: "1px solid rgba(0,0,0,0.1)", outline: "none",
-                    color: "#6E6E73", appearance: "none",
-                  }}
+                  style={{ padding: "12px 16px", borderRadius: "12px", fontSize: "15px", background: "#fff", border: "1px solid rgba(0,0,0,0.1)", outline: "none", color: "#6E6E73", appearance: "none" }}
                 >
                   <option value="">Select a category</option>
                   <option value="hardware">Hardware Product</option>
@@ -117,23 +109,13 @@ export default function ContactPage() {
                   rows={4}
                   placeholder="Describe your idea, problem, or project..."
                   required
-                  style={{
-                    padding: "12px 16px", borderRadius: "12px",
-                    fontSize: "15px", background: "#fff",
-                    border: "1px solid rgba(0,0,0,0.1)", outline: "none",
-                    resize: "none",
-                  }}
+                  style={{ padding: "12px 16px", borderRadius: "12px", fontSize: "15px", background: "#fff", border: "1px solid rgba(0,0,0,0.1)", outline: "none", resize: "none" }}
                 />
               </div>
 
               <button
                 type="submit"
-                style={{
-                  padding: "15px 32px", borderRadius: "999px",
-                  background: "#3B0F8C", color: "#fff",
-                  fontSize: "15px", fontWeight: 700,
-                  border: "none", cursor: "pointer",
-                }}
+                style={{ padding: "15px 32px", borderRadius: "999px", background: "#3B0F8C", color: "#fff", fontSize: "15px", fontWeight: 700, border: "none", cursor: "pointer" }}
               >
                 Send Message
               </button>

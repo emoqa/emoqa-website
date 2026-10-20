@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const footerLinks = {
   Products: [
-    { label: "EmoqaCMS", href: "/products/cms" },
-    { label: "HealthQa Kiosk", href: "/products/healthcare" },
+    { label: "Emoqa Sync (CMS)", href: "/products/cms" },
+    { label: "Health Kiosk", href: "/products/healthcare" },
     { label: "AI Agent Suite", href: "/products/ai" },
   ],
   Services: [
@@ -15,9 +15,8 @@ const footerLinks = {
   ],
   Company: [
     { label: "About Us", href: "/about" },
-    { label: "Portfolio", href: "/about" },
-    { label: "Careers", href: "/contact" },
     { label: "Contact", href: "/contact" },
+    { label: "Terms & Conditions", href: "/terms" },
   ],
 };
 
@@ -32,15 +31,20 @@ export default function Footer() {
               <Image src="/logo.png" alt="Emoqa" width={28} height={28} style={{ objectFit: "contain" }} />
               <span style={{ fontSize: "17px", fontWeight: 700, color: "#3B0F8C", letterSpacing: "-0.02em" }}>emoqa</span>
             </Link>
-            <p style={{ fontSize: "14px", color: "#6E6E73", lineHeight: 1.7, maxWidth: "240px", marginBottom: "24px" }}>
+            <p style={{ fontSize: "14px", color: "#6E6E73", lineHeight: 1.7, maxWidth: "240px", marginBottom: "20px" }}>
               Where emotion meets excellence. Full-stack technology company building hardware, software, and AI products across industries.
             </p>
-            <a
-              href="mailto:hello@emoqa.in"
-              style={{ fontSize: "14px", fontWeight: 600, color: "#3B0F8C", textDecoration: "none" }}
-            >
-              hello@emoqa.in
-            </a>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <a href="mailto:sales@emoqa.in" style={{ fontSize: "14px", fontWeight: 600, color: "#3B0F8C", textDecoration: "none" }}>
+                sales@emoqa.in
+              </a>
+              <a href="tel:+917400040673" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>
+                +91 7400040673
+              </a>
+              <p style={{ fontSize: "13px", color: "#6E6E73", lineHeight: 1.5 }}>
+                Gokul Nagar, Katraj,<br />Pune, Maharashtra, India
+              </p>
+            </div>
           </div>
 
           {/* Link columns */}
@@ -52,10 +56,7 @@ export default function Footer() {
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "14px" }}>
                 {links.map((l) => (
                   <li key={l.label}>
-                    <Link
-                      href={l.href}
-                      style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}
-                    >
+                    <Link href={l.href} style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>
                       {l.label}
                     </Link>
                   </li>

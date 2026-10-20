@@ -1,12 +1,19 @@
 import CTA from "@/components/sections/CTA";
 
 const features = [
-  { num: "01", title: "Offline-First", desc: "Screens keep playing even without internet. Content syncs automatically when connection returns." },
-  { num: "02", title: "Real-Time Sync", desc: "WebSocket-powered live updates. Push a new playlist — screens update in seconds, not minutes." },
-  { num: "03", title: "OTA Updates", desc: "Push app updates to thousands of screens over the air. No physical access required." },
-  { num: "04", title: "Analytics Dashboard", desc: "Track what's playing, when, and on which screen. Full playback analytics and reporting." },
-  { num: "05", title: "Multi-Tenant", desc: "Serve multiple brands or clients from one platform. Each vendor sees only their screens." },
-  { num: "06", title: "Any Screen", desc: "Works on Android TV, Fire Stick, Raspberry Pi, commercial displays. Hardware-agnostic." },
+  { num: "01", title: "Offline-First Playback", desc: "Screens never go blank. The Android kiosk caches content locally and plays it even without any internet connection — sync resumes automatically on reconnect." },
+  { num: "02", title: "WebSocket Real-Time Sync", desc: "Changes pushed from the vendor portal are reflected on all connected screens within seconds via persistent WebSocket connections (wss://cms.emoqa.in)." },
+  { num: "03", title: "OTA Updates Over the Air", desc: "New APK versions are built by CI, uploaded to the VPS, and broadcast via WebSocket to all devices. No physical access needed for updates." },
+  { num: "04", title: "Multi-Tenant Portals", desc: "Vendor portal (cms.emoqa.in) for content managers. Admin panel (cmsadmin.emoqa.in) for super-admins. Each tenant sees only their own screens and data." },
+  { num: "05", title: "Device Remote Commands", desc: "Send reboot, screenshot, mode-switch, and sync commands to any device from the portal. Live WebSocket stream for real-time device monitoring." },
+  { num: "06", title: "Device Log Submission", desc: "Operators can tap 'Send to Portal' on the device Help screen to upload full logcat logs. Portal shows them in a terminal-style viewer for instant debugging." },
+];
+
+const stack = [
+  { label: "Android Kiosk", tech: "Kotlin · Jetpack Compose · Room · Hilt · WorkManager", accent: "#3B0F8C" },
+  { label: "Backend", tech: "Node.js 22 ESM · Fastify 4 · PM2 · PostgreSQL", accent: "#3B0F8C" },
+  { label: "Vendor Portal", tech: "React · Vite · Tailwind CSS · Deployed at cms.emoqa.in", accent: "#3B0F8C" },
+  { label: "Admin Panel", tech: "React · Deployed at cmsadmin.emoqa.in", accent: "#3B0F8C" },
 ];
 
 export default function CMSPage() {
@@ -15,42 +22,88 @@ export default function CMSPage() {
       {/* Hero */}
       <section style={{ paddingTop: "140px", paddingBottom: "100px", paddingLeft: "24px", paddingRight: "24px", background: "#fff" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
-          <div style={{
+          <div className="anim-badge" style={{
             display: "inline-flex", alignItems: "center",
             padding: "6px 18px", borderRadius: "999px",
             background: "rgba(59,15,140,0.07)", color: "#3B0F8C",
             border: "1px solid rgba(59,15,140,0.15)",
-            fontSize: "13px", fontWeight: 600,
-            marginBottom: "32px",
+            fontSize: "13px", fontWeight: 600, marginBottom: "32px",
           }}>
-            Flagship Product
+            Digital Signage Platform · v2.3.4 Build 29
           </div>
-          <h1 style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "28px" }}>
-            <span className="gradient-text">EmoqaCMS</span>
-            <br />Digital Signage Platform
+          <h1 className="anim-h1" style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "28px" }}>
+            <span className="gradient-text">Emoqa Sync</span>
+            <br />One dashboard. Thousands of screens.
           </h1>
-          <p style={{ fontSize: "20px", color: "#6E6E73", lineHeight: 1.7 }}>
-            Enterprise digital signage that works everywhere — offline or online. Manage unlimited screens,
-            playlists, and schedules from a single cloud dashboard with zero on-site IT.
+          <p className="anim-subtext" style={{ fontSize: "20px", color: "#6E6E73", lineHeight: 1.7 }}>
+            Fully self-hosted offline-capable digital signage. The Android kiosk plays content without internet.
+            The Node.js backend handles sync, OTA updates, and multi-tenant management — all on your own VPS.
           </p>
         </div>
       </section>
 
+      {/* Tech stack strip */}
+      <section style={{ background: "#F5F5F7", padding: "48px 24px", borderTop: "1px solid rgba(0,0,0,0.07)" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+          {stack.map((s) => (
+            <div key={s.label} style={{ padding: "28px 24px", background: "#F5F5F7" }}>
+              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: s.accent, marginBottom: "8px" }}>{s.label}</p>
+              <p style={{ fontSize: "14px", color: "#6E6E73", lineHeight: 1.6 }}>{s.tech}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Features */}
-      <section style={{ padding: "0 24px 120px", background: "#fff" }}>
+      <section style={{ padding: "100px 24px", background: "#fff" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", textAlign: "center", color: "#1D1D1F", marginBottom: "64px" }}>
-            Everything You Need to Scale
+            Everything to manage screens at scale.
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
-            {features.map((f) => (
+            {features.map((f, i) => (
               <div
                 key={f.title}
+                className={`hover-lift anim-card-${Math.min(i + 1, 6)}`}
                 style={{ padding: "48px 36px", background: "#fff" }}
               >
-                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(59,15,140,0.4)", marginBottom: "20px" }}>{f.num}</p>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(59,15,140,0.35)", marginBottom: "20px" }}>{f.num}</p>
                 <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "12px", letterSpacing: "-0.02em" }}>{f.title}</h3>
                 <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architecture callout */}
+      <section style={{ padding: "100px 24px", background: "#0D0D0D" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>Architecture</p>
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1, marginBottom: "24px" }}>
+              Fully self-hosted.<br />Zero cloud dependency.
+            </h2>
+            <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
+              One VPS runs everything — the backend, both portals, all APK downloads, and all media files.
+              GoDaddy DNS routes cms.emoqa.in and cmsadmin.emoqa.in to nginx on the same box. Your data never leaves your infrastructure.
+            </p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {[
+              ["Android Kiosk", "com.emoqa.offline · Package ID per device"],
+              ["WebSocket", "wss://cms.emoqa.in/api/device/ws"],
+              ["REST API", "cms.emoqa.in/api/* → Node.js Fastify 4"],
+              ["Media Files", "cms.emoqa.in/media/* → /var/www/emoqa-media/"],
+              ["APK Downloads", "cms.emoqa.in/apk/*.apk → /var/www/emoqa-apk/"],
+            ].map(([label, val]) => (
+              <div key={label} style={{
+                padding: "16px 20px", borderRadius: "12px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}>
+                <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "4px" }}>{label}</p>
+                <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)", fontFamily: "monospace" }}>{val}</p>
               </div>
             ))}
           </div>
@@ -61,11 +114,11 @@ export default function CMSPage() {
       <section style={{ padding: "100px 24px", background: "#F5F5F7" }}>
         <div style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#1D1D1F", marginBottom: "24px" }}>
-            Proven at Scale
+            Proven at scale.
           </h2>
           <p style={{ fontSize: "18px", color: "#6E6E73", lineHeight: 1.7 }}>
-            EmoqaCMS is deployed across retail chains, hospitals, corporate campuses, and government institutions.
-            Tested from 1 screen to thousands — the architecture never breaks a sweat.
+            Emoqa Sync is deployed across retail chains, hospitals, corporate campuses, and government institutions.
+            From 1 screen to thousands — the architecture doesn&apos;t break a sweat.
           </p>
         </div>
       </section>
