@@ -2,53 +2,67 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export default function CTA() {
   return (
     <section
-      className="py-32 px-6 relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #3B0F8C 0%, #6929C4 60%, #3B0F8C 100%)",
-      }}
+      className="py-40 px-6 relative overflow-hidden"
+      style={{ background: "#1D1D1F" }}
     >
-      {/* Decorative glow */}
+      {/* Subtle purple glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] opacity-30 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, #F5A01A 0%, transparent 70%)" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse, rgba(59,15,140,0.4) 0%, transparent 70%)",
+        }}
       />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <motion.div
+        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="font-bold tracking-tight mb-8 text-white"
+          style={{ fontSize: "clamp(42px, 7vw, 80px)", lineHeight: 1.05 }}
         >
-          <h2 className="text-[clamp(40px,6vw,72px)] font-bold tracking-tight leading-tight text-white mb-6">
-            Your Idea.
-            <br />
-            Our Execution.
-          </h2>
-          <p className="text-xl text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
-            Whether it&apos;s a sketch on a napkin or a detailed spec — we turn it into a product the world will notice.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold transition-all hover:opacity-90 hover:shadow-xl active:scale-95"
-              style={{ background: "#F5A01A", color: "#1D1D1F" }}
-            >
-              Start a Project <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/products/cms"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold transition-all hover:bg-white/10 active:scale-95"
-              style={{ border: "1.5px solid rgba(255,255,255,0.5)", color: "#ffffff" }}
-            >
-              View Our Products
-            </Link>
-          </div>
+          Your idea.
+          <br />
+          Our execution.
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-xl mb-12 leading-relaxed"
+          style={{ color: "rgba(255,255,255,0.55)", maxWidth: "500px", margin: "0 auto 3rem" }}
+        >
+          A sketch on a napkin or a full spec — we turn it into a product the world notices.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.18 }}
+          className="flex flex-wrap justify-center gap-4"
+        >
+          <Link
+            href="/contact"
+            className="inline-flex items-center px-9 py-4 rounded-full text-base font-semibold transition-all hover:opacity-90 active:scale-95"
+            style={{ background: "#F5A01A", color: "#1D1D1F" }}
+          >
+            Start a Project
+          </Link>
+          <Link
+            href="/products/cms"
+            className="inline-flex items-center px-9 py-4 rounded-full text-base font-semibold transition-all hover:bg-white/10 active:scale-95"
+            style={{ border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff" }}
+          >
+            See Our Products
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -1,93 +1,106 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Smartphone,
-  Globe,
-  Cpu,
-  Brain,
-  Link as LinkIcon,
-  Glasses,
-  Monitor,
-  Settings,
-} from "lucide-react";
+import Link from "next/link";
 
-const services = [
-  { icon: Smartphone, label: "Android & iOS", desc: "Native mobile apps for any use case" },
-  { icon: Globe, label: "Web Development", desc: "Full-stack web apps & portals" },
-  { icon: Cpu, label: "IoT & Hardware", desc: "Custom hardware + firmware solutions" },
-  { icon: Brain, label: "Artificial Intelligence", desc: "ML models, AI agents, LLM integration" },
-  { icon: LinkIcon, label: "Blockchain", desc: "DeFi, NFT, supply chain on-chain solutions" },
-  { icon: Glasses, label: "AR / VR", desc: "Immersive experiences for training & retail" },
-  { icon: Monitor, label: "Desktop Applications", desc: "Cross-platform Windows / macOS apps" },
-  { icon: Settings, label: "System Integration", desc: "API integrations, ERP, legacy modernisation" },
+const capabilities = [
+  "Android & iOS",
+  "Web Development",
+  "IoT & Hardware",
+  "Artificial Intelligence",
+  "Blockchain",
+  "AR / VR",
+  "Desktop Applications",
+  "System Integration",
 ];
-
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function Services() {
   return (
-    <section className="py-32 px-6" style={{ background: "#F5F5F7" }}>
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#3B0F8C" }}>
-            What We Do
-          </p>
-          <h2 className="text-[clamp(36px,5vw,56px)] font-bold tracking-tight leading-tight mb-4">
-            Every Technology You Need
-          </h2>
-          <p className="text-lg text-[#6E6E73] max-w-xl mx-auto">
-            We speak every technology stack. Your idea doesn&apos;t need to fit a category — we&apos;ll figure it out.
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {services.map((s) => {
-            const Icon = s.icon;
-            return (
-              <motion.div
-                key={s.label}
-                variants={item}
-                className="flex flex-col gap-3 p-6 rounded-2xl bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-default"
-                style={{ border: "1px solid rgba(0,0,0,0.06)" }}
+    <section className="py-40 px-6" style={{ background: "#F5F5F7" }}>
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row lg:items-end gap-16 lg:gap-24">
+          {/* Left — headline */}
+          <div className="lg:w-1/2">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-sm font-semibold uppercase tracking-widest mb-5"
+              style={{ color: "#3B0F8C" }}
+            >
+              Capabilities
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, delay: 0.08 }}
+              className="font-bold tracking-tight mb-8"
+              style={{ fontSize: "clamp(38px, 5.5vw, 64px)", color: "#1D1D1F", lineHeight: 1.08 }}
+            >
+              Every technology
+              <br />
+              under one roof.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.15 }}
+              className="text-lg leading-relaxed mb-10"
+              style={{ color: "#6E6E73", maxWidth: "380px" }}
+            >
+              You bring the idea. We handle every layer — from circuit board to cloud, from model to mobile.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.22 }}
+            >
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 text-base font-semibold"
+                style={{ color: "#3B0F8C" }}
               >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "rgba(59,15,140,0.08)" }}
+                View all services →
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Right — clean capability list */}
+          <div className="lg:w-1/2">
+            <div className="flex flex-col">
+              {capabilities.map((cap, i) => (
+                <motion.div
+                  key={cap}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className="flex items-center justify-between py-5 group cursor-default"
+                  style={{
+                    borderBottom: i < capabilities.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none",
+                  }}
                 >
-                  <Icon size={20} style={{ color: "#3B0F8C" }} />
-                </div>
-                <div>
-                  <p className="font-semibold text-sm mb-1" style={{ color: "#1D1D1F" }}>
-                    {s.label}
-                  </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "#6E6E73" }}>
-                    {s.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                  <span
+                    className="text-lg font-medium transition-colors group-hover:text-[#3B0F8C]"
+                    style={{ color: "#1D1D1F" }}
+                  >
+                    {cap}
+                  </span>
+                  <span
+                    className="text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity"
+                    style={{ color: "#3B0F8C" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

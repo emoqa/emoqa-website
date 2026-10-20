@@ -2,140 +2,154 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Monitor, Heart, Bot } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const products = [
   {
-    icon: Monitor,
+    index: "01",
     color: "#3B0F8C",
-    bg: "rgba(59,15,140,0.06)",
+    lightBg: "rgba(59,15,140,0.04)",
     name: "EmoqaCMS",
-    tagline: "Digital Signage Platform",
+    category: "Digital Signage Platform",
+    headline: "One dashboard.\nThousands of screens.",
     description:
-      "A fully offline-capable content management system for digital signage. Manage thousands of screens from a single dashboard — playlists, schedules, live stats — even without internet.",
-    highlights: ["Offline-first architecture", "Real-time WebSocket sync", "OTA updates", "Multi-tenant"],
+      "Offline-first content management for digital signage. Push playlists, schedules, and live updates to any screen — with or without internet.",
+    cta: "Explore EmoqaCMS",
     href: "/products/cms",
   },
   {
-    icon: Heart,
+    index: "02",
     color: "#00A651",
-    bg: "rgba(0,166,81,0.06)",
+    lightBg: "rgba(0,166,81,0.04)",
     name: "HealthQa Kiosk",
-    tagline: "Healthcare Kiosk System",
+    category: "Healthcare Diagnostics",
+    headline: "130+ tests.\nResults in 60 seconds.",
     description:
-      "Walk-in, no doctor needed. Our kiosk delivers 130+ instant diagnostics — vitals, blood parameters, ECG, BMI — with a printed report and live telemedicine in under 5 minutes.",
-    highlights: ["130+ instant tests", "60-second reports", "Telemedicine built-in", "Multilingual"],
+      "Walk-in diagnostics with no appointment, no lab, no wait. Blood tests, ECG, vitals — and a live doctor via telemedicine, all from one kiosk.",
+    cta: "Explore HealthQa",
     href: "/products/healthcare",
   },
   {
-    icon: Bot,
+    index: "03",
     color: "#1E90FF",
-    bg: "rgba(30,144,255,0.06)",
+    lightBg: "rgba(30,144,255,0.04)",
     name: "AI Agent Suite",
-    tagline: "Intelligent Conversational Agents",
+    category: "Conversational AI",
+    headline: "It teaches.\nIt sells. It speaks\nyour language.",
     description:
-      "Two flagship AI agents: a Teacher that draws diagrams, highlights concepts and explains in any language — and a Sales Agent that demos products, describes features, and negotiates.",
-    highlights: ["Multilingual voice", "Draws & annotates", "Product demo mode", "Negotiation AI"],
+      "Two flagship AI agents — one that explains concepts by drawing diagrams in real time, one that demos products, negotiates, and closes deals.",
+    cta: "Explore AI Agents",
     href: "/products/ai",
   },
 ];
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.15 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
-};
-
 export default function Products() {
   return (
-    <section className="py-32 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+    <section className="bg-white">
+      {/* Section header */}
+      <div className="max-w-6xl mx-auto px-6 pt-32 pb-20 text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-sm font-semibold uppercase tracking-widest mb-5"
+          style={{ color: "#3B0F8C" }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#3B0F8C" }}>
-            Flagship Products
-          </p>
-          <h2 className="text-[clamp(36px,5vw,56px)] font-bold tracking-tight leading-tight mb-4" style={{ color: "#1D1D1F" }}>
-            Our Proprietary Platforms
-          </h2>
-          <p className="text-lg text-[#6E6E73] max-w-xl mx-auto">
-            Built from the ground up, deployed across industries, trusted by enterprises.
-          </p>
-        </motion.div>
+          Proprietary Products
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="font-bold tracking-tight"
+          style={{ fontSize: "clamp(38px, 5.5vw, 64px)", color: "#1D1D1F", lineHeight: 1.08 }}
+        >
+          Built from scratch.
+          <br />
+          Deployed across industries.
+        </motion.h2>
+      </div>
 
+      {/* Products — full-width alternating */}
+      {products.map((p, i) => (
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
+          key={p.name}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+          transition={{ duration: 0.65 }}
+          className={`py-0`}
         >
-          {products.map((p) => {
-            const Icon = p.icon;
-            return (
-              <motion.div
-                key={p.name}
-                variants={item}
-                className="group flex flex-col rounded-[20px] p-8 border transition-all duration-300 hover:-translate-y-2 cursor-pointer"
-                style={{
-                  borderColor: "rgba(0,0,0,0.08)",
-                  boxShadow: "0 2px 20px rgba(0,0,0,0.04)",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,0,0,0.12)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.boxShadow = "0 2px 20px rgba(0,0,0,0.04)")
-                }
-              >
-                {/* Icon */}
+          <div
+            className="max-w-6xl mx-auto px-6 py-20"
+            style={{
+              borderTop: "1px solid rgba(0,0,0,0.06)",
+            }}
+          >
+            <div className={`flex flex-col lg:flex-row gap-16 items-center ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+              {/* Visual block */}
+              <div className="w-full lg:w-1/2">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: p.bg }}
+                  className="w-full aspect-[4/3] rounded-3xl flex flex-col items-center justify-center"
+                  style={{ background: p.lightBg, border: `1px solid ${p.color}18` }}
                 >
-                  <Icon size={26} style={{ color: p.color }} />
+                  <span
+                    className="font-bold"
+                    style={{ fontSize: "clamp(80px, 12vw, 140px)", color: p.color, opacity: 0.15, lineHeight: 1 }}
+                  >
+                    {p.index}
+                  </span>
+                  <span
+                    className="font-bold tracking-tight mt-2"
+                    style={{ fontSize: "clamp(20px, 2.5vw, 28px)", color: p.color }}
+                  >
+                    {p.name}
+                  </span>
                 </div>
+              </div>
 
-                {/* Header */}
-                <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: p.color }}>
-                  {p.tagline}
-                </p>
-                <h3 className="text-2xl font-bold mb-3" style={{ color: "#1D1D1F" }}>
-                  {p.name}
+              {/* Copy */}
+              <div className="w-full lg:w-1/2 flex flex-col gap-6">
+                <div>
+                  <span
+                    className="text-xs font-semibold uppercase tracking-widest"
+                    style={{ color: p.color }}
+                  >
+                    {p.category}
+                  </span>
+                </div>
+                <h3
+                  className="font-bold tracking-tight"
+                  style={{
+                    fontSize: "clamp(32px, 4vw, 52px)",
+                    color: "#1D1D1F",
+                    lineHeight: 1.1,
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {p.headline}
                 </h3>
-                <p className="text-[#6E6E73] text-base leading-relaxed mb-6">{p.description}</p>
-
-                {/* Highlights */}
-                <ul className="flex flex-col gap-2 mb-8 flex-1">
-                  {p.highlights.map((h) => (
-                    <li key={h} className="flex items-center gap-2 text-sm" style={{ color: "#1D1D1F" }}>
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: p.color }} />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
+                <p
+                  className="leading-relaxed"
+                  style={{ fontSize: "17px", color: "#6E6E73", maxWidth: "420px" }}
+                >
+                  {p.description}
+                </p>
                 <Link
                   href={p.href}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all"
+                  className="inline-flex items-center gap-2 text-base font-semibold group w-fit"
                   style={{ color: p.color }}
                 >
-                  Learn more <ArrowRight size={14} />
+                  {p.cta}
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </Link>
-              </motion.div>
-            );
-          })}
+              </div>
+            </div>
+          </div>
         </motion.div>
-      </div>
+      ))}
     </section>
   );
 }
