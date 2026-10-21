@@ -111,14 +111,9 @@ export default function ProjectsCarousel() {
             background: "#fff",
           }}
         >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-            }}
-          >
+          <div className="r-2col" style={{ gap: 0 }}>
             {/* Left — Info */}
-            <div style={{ padding: "56px 48px", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div style={{ padding: "clamp(28px,5vw,56px) clamp(20px,4vw,48px)", display: "flex", flexDirection: "column", gap: "20px" }}>
               <span style={{
                 display: "inline-flex", width: "fit-content",
                 padding: "5px 14px", borderRadius: "999px",
@@ -173,7 +168,7 @@ export default function ProjectsCarousel() {
             </div>
 
             {/* Right — Visual */}
-            <div style={{
+            <div className="r-carousel-right" style={{
               background: p.accentBg,
               display: "flex",
               flexDirection: "column",

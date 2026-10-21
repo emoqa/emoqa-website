@@ -15,7 +15,7 @@ export default function Services() {
   return (
     <section style={{ background: "#0D0D0D", padding: "120px 24px" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+        <div className="r-2col" style={{ gap: "80px" }}>
           {/* Left */}
           <div>
             <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "20px" }}>

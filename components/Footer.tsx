@@ -24,7 +24,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "#F5F5F7", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "80px 24px 48px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "48px", marginBottom: "64px" }}>
+        <div className="r-footer-grid" style={{ marginBottom: "64px" }}>
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", marginBottom: "20px" }}>
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{
+        <div className="r-footer-bottom" style={{
           paddingTop: "28px",
           borderTop: "1px solid rgba(0,0,0,0.08)",
           display: "flex",

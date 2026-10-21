@@ -38,7 +38,7 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "24px" }}>
+        <div className="r-3col" style={{ gap: "24px" }}>
           {testimonials.map((t, i) => (
             <div
               key={i}

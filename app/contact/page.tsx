@@ -2,7 +2,7 @@ export default function ContactPage() {
   return (
     <section style={{ paddingTop: "140px", paddingBottom: "120px", paddingLeft: "24px", paddingRight: "24px", background: "#fff" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+        <div className="r-2col" style={{ gap: "64px", alignItems: "start" }}>
 
           {/* Left */}
           <div>
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 background: "#F5F5F7", border: "1px solid rgba(0,0,0,0.06)",
               }}
             >
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div className="r-form-names" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                 {[
                   { name: "first_name", label: "First Name", placeholder: "Ronit" },
                   { name: "last_name", label: "Last Name", placeholder: "Nandeshwar" },

@@ -44,7 +44,7 @@ export default function CMSPage() {
 
       {/* Tech stack strip */}
       <section style={{ background: "#F5F5F7", padding: "48px 24px", borderTop: "1px solid rgba(0,0,0,0.07)" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+        <div className="r-4col" style={{ maxWidth: "1100px", margin: "0 auto", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
           {stack.map((s) => (
             <div key={s.label} style={{ padding: "28px 24px", background: "#F5F5F7" }}>
               <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: s.accent, marginBottom: "8px" }}>{s.label}</p>
@@ -60,7 +60,7 @@ export default function CMSPage() {
           <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", textAlign: "center", color: "#1D1D1F", marginBottom: "64px" }}>
             Everything to manage screens at scale.
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+          <div className="r-3col" style={{ gap: "1px", background: "rgba(0,0,0,0.07)" }}>
             {features.map((f, i) => (
               <div
                 key={f.title}
@@ -78,7 +78,7 @@ export default function CMSPage() {
 
       {/* Architecture callout */}
       <section style={{ padding: "100px 24px", background: "#0D0D0D" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+        <div className="r-2col-center" style={{ maxWidth: "1100px", margin: "0 auto", gap: "64px" }}>
           <div>
             <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>Architecture</p>
             <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1, marginBottom: "24px" }}>

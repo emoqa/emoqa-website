@@ -77,9 +77,10 @@ export default function ServicesPage() {
           {services.map((s, i) => (
             <div
               key={s.name}
+              className="r-svc-row"
               style={{
                 display: "grid",
-                gridTemplateColumns: "80px 1fr auto",
+                gridTemplateColumns: "80px 1fr",
                 gap: "32px",
                 alignItems: "start",
                 padding: "40px 0",
@@ -88,22 +89,24 @@ export default function ServicesPage() {
             >
               <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(0,0,0,0.2)", paddingTop: "4px" }}>{s.num}</span>
               <div>
-                <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px", letterSpacing: "-0.02em" }}>{s.name}</h3>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "16px", flexWrap: "wrap" }}>
+                  <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#1D1D1F", marginBottom: "10px", letterSpacing: "-0.02em" }}>{s.name}</h3>
+                  <div className="r-svc-tags" style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end" }}>
+                    {s.tags.map((t) => (
+                      <span
+                        key={t}
+                        style={{
+                          fontSize: "12px", fontWeight: 600,
+                          padding: "5px 12px", borderRadius: "999px",
+                          background: s.bg, color: s.color,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <p style={{ fontSize: "16px", color: "#6E6E73", lineHeight: 1.7, maxWidth: "560px" }}>{s.desc}</p>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end", maxWidth: "200px" }}>
-                {s.tags.map((t) => (
-                  <span
-                    key={t}
-                    style={{
-                      fontSize: "12px", fontWeight: 600,
-                      padding: "5px 12px", borderRadius: "999px",
-                      background: s.bg, color: s.color,
-                    }}
-                  >
-                    {t}
-                  </span>
-                ))}
               </div>
             </div>
           ))}

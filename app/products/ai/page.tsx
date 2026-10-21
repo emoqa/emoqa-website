@@ -51,13 +51,10 @@ export default function AIPage() {
           pointerEvents: "none",
         }} />
 
-        <div style={{
+        <div className="r-ai-hero r-2col-center" style={{
           position: "relative", zIndex: 1,
           maxWidth: "1200px", width: "100%", margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
           gap: "60px",
-          alignItems: "center",
         }}>
           {/* Left — headline */}
           <div>
@@ -129,7 +126,7 @@ export default function AIPage() {
           </div>
 
           {/* Right — two overlapping kiosk screens */}
-          <div className="anim-card-3" style={{
+          <div className="r-ai-screens anim-card-3" style={{
             position: "relative",
             display: "flex",
             justifyContent: "center",
@@ -190,10 +187,7 @@ export default function AIPage() {
             </span>
           </div>
 
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr",
-            gap: "64px", alignItems: "center",
-          }}>
+          <div className="r-ai-agent r-2col-center" style={{ gap: "64px" }}>
             {/* Left — story */}
             <div>
               <span className="anim-badge" style={{
@@ -285,10 +279,7 @@ export default function AIPage() {
             </span>
           </div>
 
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr",
-            gap: "64px", alignItems: "center",
-          }}>
+          <div className="r-ai-agent r-2col-center" style={{ gap: "64px" }}>
             {/* Left — kiosk screen */}
             <div className="float-1" style={{ display: "flex", justifyContent: "flex-start" }}>
               <AgentScreen
@@ -405,8 +396,7 @@ export default function AIPage() {
         borderTop: "1px solid rgba(255,255,255,0.04)",
       }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{
-            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+          <div className="r-4col" style={{
             gap: "1px", background: "rgba(255,255,255,0.05)",
             borderRadius: "18px", overflow: "hidden",
             border: "1px solid rgba(255,255,255,0.06)",

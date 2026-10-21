@@ -40,7 +40,7 @@ export default function AboutPage() {
           <h2 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 700, letterSpacing: "-0.03em", textAlign: "center", color: "#1D1D1F", marginBottom: "64px" }}>
             What We Stand For
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px" }}>
+          <div className="r-4col" style={{ gap: "24px" }}>
             {values.map((v) => (
               <div
                 key={v.title}
@@ -65,7 +65,7 @@ export default function AboutPage() {
             From a blood-test kiosk used in rural clinics to a command-and-control interface for defence units —
             every project is purpose-built.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "20px" }}>
+          <div className="r-3col" style={{ gap: "20px" }}>
             {stats.map(([val, lbl]) => (
               <div
                 key={lbl}

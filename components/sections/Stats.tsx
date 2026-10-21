@@ -41,10 +41,11 @@ export default function Stats() {
   return (
     <section style={{ background: "#fff", borderTop: "1px solid rgba(0,0,0,0.07)", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+        <div className="r-4col">
           {stats.map((s, i) => (
             <div
               key={s.label}
+              className="r-stats-cell"
               style={{
                 display: "flex", flexDirection: "column", alignItems: "center",
                 padding: "56px 16px",

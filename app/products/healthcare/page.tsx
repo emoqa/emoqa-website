@@ -51,7 +51,7 @@ export default function HealthcarePage() {
           <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#1D1D1F", marginBottom: "32px", textAlign: "center" }}>
             4 Deployment Modes
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+          <div className="r-4col" style={{ gap: "1px", background: "rgba(0,0,0,0.07)" }}>
             {modes.map((m) => (
               <div key={m.name} style={{ padding: "32px 24px", background: "#F5F5F7" }}>
                 <p style={{ fontSize: "14px", fontWeight: 800, color: m.color, marginBottom: "12px", letterSpacing: "0.04em" }}>{m.name}</p>
@@ -68,7 +68,7 @@ export default function HealthcarePage() {
           <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", textAlign: "center", color: "#1D1D1F", marginBottom: "64px" }}>
             Healthcare reimagined.
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(0,0,0,0.07)" }}>
+          <div className="r-3col" style={{ gap: "1px", background: "rgba(0,0,0,0.07)" }}>
             {features.map((f, i) => (
               <div
                 key={f.title}
@@ -86,7 +86,7 @@ export default function HealthcarePage() {
 
       {/* Tech stack */}
       <section style={{ padding: "100px 24px", background: "#0D0D0D" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+        <div className="r-2col-center" style={{ maxWidth: "1100px", margin: "0 auto", gap: "64px" }}>
           <div>
             <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>Technology</p>
             <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1, marginBottom: "24px" }}>

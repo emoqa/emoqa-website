@@ -18,7 +18,7 @@ export default function Process() {
           </h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+        <div className="r-4col" style={{ border: "1px solid rgba(0,0,0,0.09)", borderRadius: "16px", overflow: "hidden" }}>
           {steps.map((s, i) => (
             <div
               key={s.num}
