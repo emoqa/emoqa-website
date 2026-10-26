@@ -94,7 +94,7 @@ export default function TermsPage() {
       <div style={{ maxWidth: "760px", margin: "0 auto" }}>
         {/* Header */}
         <div className="anim-hero-2" style={{ marginBottom: "72px" }}>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
             Legal
           </p>
           <h1 style={{ fontSize: "clamp(36px,5vw,60px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "20px" }}>
@@ -126,11 +126,11 @@ export default function TermsPage() {
         <div style={{ marginTop: "72px", padding: "32px", borderRadius: "16px", background: "#F5F5F7", border: "1px solid rgba(0,0,0,0.06)" }}>
           <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>
             For questions about these terms, please contact us at{" "}
-            <a href="mailto:sales@emoqa.in" style={{ color: "#3B0F8C", fontWeight: 600, textDecoration: "none" }}>
+            <a href="mailto:sales@emoqa.in" style={{ color: "#4B00A0", fontWeight: 600, textDecoration: "none" }}>
               sales@emoqa.in
             </a>{" "}
             or call{" "}
-            <a href="tel:+917400040673" style={{ color: "#3B0F8C", fontWeight: 600, textDecoration: "none" }}>
+            <a href="tel:+917400040673" style={{ color: "#4B00A0", fontWeight: 600, textDecoration: "none" }}>
               +91 7400040673
             </a>.
           </p>

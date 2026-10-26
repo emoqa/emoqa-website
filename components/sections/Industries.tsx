@@ -4,7 +4,7 @@ export default function Industries() {
   return (
     <section style={{ background: "#fff", padding: "120px 24px" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
-        <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+        <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
           Industries
         </p>
         <h2 style={{ fontSize: "clamp(38px, 5.5vw, 64px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.07, color: "#1D1D1F", marginBottom: "16px" }}>

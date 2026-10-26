@@ -4,7 +4,7 @@ export default function CTA() {
   return (
     <section
       style={{
-        background: "linear-gradient(135deg, #2A0A6E 0%, #3B0F8C 50%, #1a0860 100%)",
+        background: "linear-gradient(135deg, #2A0A6E 0%, #4B00A0 50%, #1a0860 100%)",
         padding: "140px 24px",
         textAlign: "center",
         position: "relative",
@@ -15,7 +15,7 @@ export default function CTA() {
       <div aria-hidden style={{
         position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
         width: "600px", height: "300px", borderRadius: "50%",
-        background: "radial-gradient(ellipse, rgba(245,160,26,0.25) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, rgba(247,148,29,0.25) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
@@ -36,7 +36,7 @@ export default function CTA() {
             style={{
               display: "inline-flex", alignItems: "center",
               padding: "16px 36px", borderRadius: "999px",
-              background: "#F5A01A", color: "#1D1D1F",
+              background: "#F7941D", color: "#1D1D1F",
               fontWeight: 700, fontSize: "16px", textDecoration: "none",
             }}
           >

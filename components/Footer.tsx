@@ -29,13 +29,13 @@ export default function Footer() {
           <div>
             <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", marginBottom: "20px" }}>
               <Image src="/logo.png" alt="Emoqa" width={28} height={28} style={{ objectFit: "contain" }} />
-              <span style={{ fontSize: "17px", fontWeight: 700, color: "#3B0F8C", letterSpacing: "-0.02em" }}>emoqa</span>
+              <span style={{ fontSize: "17px", fontWeight: 700, color: "#4B00A0", letterSpacing: "-0.02em" }}>emoqa</span>
             </Link>
             <p style={{ fontSize: "14px", color: "#6E6E73", lineHeight: 1.7, maxWidth: "240px", marginBottom: "20px" }}>
               Where emotion meets excellence. Full-stack technology company building hardware, software, and AI products across industries.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <a href="mailto:sales@emoqa.in" style={{ fontSize: "14px", fontWeight: 600, color: "#3B0F8C", textDecoration: "none" }}>
+              <a href="mailto:sales@emoqa.in" style={{ fontSize: "14px", fontWeight: 600, color: "#4B00A0", textDecoration: "none" }}>
                 sales@emoqa.in
               </a>
               <a href="tel:+917400040673" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>

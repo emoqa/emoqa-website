@@ -10,7 +10,7 @@ export default function Process() {
     <section style={{ background: "#F5F5F7", padding: "120px 24px" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "80px" }}>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
             How We Work
           </p>
           <h2 style={{ fontSize: "clamp(38px, 5.5vw, 64px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.07, color: "#1D1D1F" }}>
@@ -27,7 +27,7 @@ export default function Process() {
                 borderLeft: i > 0 ? "1px solid rgba(0,0,0,0.09)" : "none",
               }}
             >
-              <div style={{ fontSize: "52px", fontWeight: 800, color: "#3B0F8C", opacity: 0.15, lineHeight: 1, marginBottom: "28px" }}>
+              <div style={{ fontSize: "52px", fontWeight: 800, color: "#4B00A0", opacity: 0.15, lineHeight: 1, marginBottom: "28px" }}>
                 {s.num}
               </div>
               <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "12px" }}>

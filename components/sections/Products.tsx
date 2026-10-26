@@ -3,8 +3,8 @@ import Link from "next/link";
 const products = [
   {
     num: "01",
-    accent: "#3B0F8C",
-    bg: "rgba(59,15,140,0.05)",
+    accent: "#4B00A0",
+    bg: "rgba(75,0,160,0.05)",
     name: "EmoqaCMS",
     category: "Digital Signage Platform",
     headline: "One dashboard.\nThousands of screens.",
@@ -23,7 +23,7 @@ const products = [
   },
   {
     num: "03",
-    accent: "#1E90FF",
+    accent: "#1B9FFF",
     bg: "rgba(30,144,255,0.05)",
     name: "AI Agent Suite",
     category: "Conversational AI",
@@ -38,7 +38,7 @@ export default function Products() {
     <section style={{ background: "#fff" }}>
       {/* Header */}
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "120px 24px 80px", textAlign: "center" }}>
-        <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+        <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
           Proprietary Products
         </p>
         <h2 style={{ fontSize: "clamp(38px, 5.5vw, 64px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.07, color: "#1D1D1F" }}>

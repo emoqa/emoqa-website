@@ -60,9 +60,9 @@ export default function ChatDemo() {
       }}>
         <div style={{
           width: "38px", height: "38px", borderRadius: "50%", flexShrink: 0,
-          background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
+          background: "linear-gradient(135deg, #4B00A0, #7B2FBE)",
           display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 0 12px rgba(59,15,140,0.5)",
+          boxShadow: "0 0 12px rgba(75,0,160,0.5)",
         }}>
           <span style={{ fontSize: "13px", fontWeight: 900, color: "#fff" }}>AI</span>
         </div>
@@ -100,10 +100,10 @@ export default function ChatDemo() {
               padding: "10px 14px",
               borderRadius: m.from === "user" ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
               background: m.from === "user"
-                ? "linear-gradient(135deg, rgba(105,41,196,0.35), rgba(59,15,140,0.25))"
+                ? "linear-gradient(135deg, rgba(123,47,190,0.35), rgba(75,0,160,0.25))"
                 : "rgba(255,255,255,0.07)",
               border: m.from === "user"
-                ? "1px solid rgba(105,41,196,0.3)"
+                ? "1px solid rgba(123,47,190,0.3)"
                 : "1px solid rgba(255,255,255,0.08)",
               fontSize: "13px", lineHeight: 1.55,
               color: m.from === "user" ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.78)",

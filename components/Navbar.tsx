@@ -10,8 +10,8 @@ const products = [
     name: "Emoqa Sync",
     tagline: "Digital signage platform",
     href: "/products/cms",
-    color: "#3B0F8C",
-    dot: "#3B0F8C",
+    color: "#4B00A0",
+    dot: "#4B00A0",
   },
   {
     name: "Emoqa Health Kiosk",
@@ -24,8 +24,8 @@ const products = [
     name: "AI Agent Suite",
     tagline: "Conversational AI on kiosks",
     href: "/products/ai",
-    color: "#1E90FF",
-    dot: "#1E90FF",
+    color: "#1B9FFF",
+    dot: "#1B9FFF",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
           <Image src="/logo.png" alt="Emoqa" width={34} height={34} style={{ objectFit: "contain" }} />
-          <span style={{ fontSize: "19px", fontWeight: 800, letterSpacing: "-0.02em", color: "#3B0F8C" }}>emoqa</span>
+          <span style={{ fontSize: "19px", fontWeight: 800, letterSpacing: "-0.02em", color: "#4B00A0" }}>emoqa</span>
         </Link>
 
         {/* Desktop nav */}
@@ -92,7 +92,7 @@ export default function Navbar() {
               style={{
                 display: "flex", alignItems: "center", gap: "4px",
                 fontSize: "14px", fontWeight: 500,
-                color: dropOpen ? "#3B0F8C" : "#1D1D1F",
+                color: dropOpen ? "#4B00A0" : "#1D1D1F",
                 background: "none", border: "none", cursor: "pointer",
                 padding: 0, transition: "color 0.2s",
               }}
@@ -163,7 +163,7 @@ export default function Navbar() {
                 color: "#1D1D1F", textDecoration: "none",
                 transition: "color 0.2s",
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#3B0F8C")}
+              onMouseEnter={e => (e.currentTarget.style.color = "#4B00A0")}
               onMouseLeave={e => (e.currentTarget.style.color = "#1D1D1F")}
             >
               {l.label}
@@ -177,7 +177,7 @@ export default function Navbar() {
             style={{
               fontSize: "13px", fontWeight: 700,
               padding: "10px 22px", borderRadius: "999px",
-              background: "#3B0F8C", color: "#fff",
+              background: "#4B00A0", color: "#fff",
               textDecoration: "none", transition: "opacity 0.2s",
             }}
             onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
@@ -270,7 +270,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
             style={{
               marginTop: "12px", padding: "13px",
-              borderRadius: "12px", background: "#3B0F8C",
+              borderRadius: "12px", background: "#4B00A0",
               color: "#fff", textAlign: "center",
               fontSize: "14px", fontWeight: 700, textDecoration: "none",
             }}

@@ -12,7 +12,7 @@ export default function Hero() {
         style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
           width: "900px", height: "600px", pointerEvents: "none",
-          background: "radial-gradient(ellipse at 50% 0%, rgba(59,15,140,0.07) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse at 50% 0%, rgba(75,0,160,0.07) 0%, transparent 65%)",
         }}
       />
 
@@ -60,7 +60,7 @@ export default function Hero() {
             style={{
               display: "inline-flex", alignItems: "center",
               padding: "14px 32px", borderRadius: "999px",
-              background: "#3B0F8C", color: "#fff",
+              background: "#4B00A0", color: "#fff",
               fontWeight: 600, fontSize: "16px",
               textDecoration: "none",
               transition: "opacity 0.2s",
@@ -73,8 +73,8 @@ export default function Hero() {
             style={{
               display: "inline-flex", alignItems: "center",
               padding: "14px 32px", borderRadius: "999px",
-              color: "#3B0F8C", fontWeight: 600, fontSize: "16px",
-              border: "1.5px solid rgba(59,15,140,0.3)",
+              color: "#4B00A0", fontWeight: 600, fontSize: "16px",
+              border: "1.5px solid rgba(75,0,160,0.3)",
               textDecoration: "none",
               transition: "background 0.2s",
             }}

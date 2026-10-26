@@ -86,7 +86,7 @@ export default function NeuralCanvas({ style }: { style?: React.CSSProperties })
         ctx!.beginPath();
         ctx!.moveTo(nodes[i].x, nodes[i].y);
         ctx!.lineTo(nodes[j].x, nodes[j].y);
-        ctx!.strokeStyle = `rgba(105,41,196,${a})`;
+        ctx!.strokeStyle = `rgba(123,47,190,${a})`;
         ctx!.lineWidth = 0.6;
         ctx!.stroke();
       });
@@ -103,11 +103,11 @@ export default function NeuralCanvas({ style }: { style?: React.CSSProperties })
         const ty = fn.y + (tn.y - fn.y) * trailT;
         const g = ctx!.createLinearGradient(tx, ty, x, y);
         g.addColorStop(0, "transparent");
-        g.addColorStop(1, p.blue ? "rgba(30,144,255,0.9)" : "rgba(59,15,140,0.9)");
+        g.addColorStop(1, p.blue ? "rgba(30,144,255,0.9)" : "rgba(75,0,160,0.9)");
         ctx!.beginPath(); ctx!.moveTo(tx, ty); ctx!.lineTo(x, y);
         ctx!.strokeStyle = g; ctx!.lineWidth = 1.6; ctx!.stroke();
         ctx!.beginPath(); ctx!.arc(x, y, 2.2, 0, Math.PI * 2);
-        ctx!.fillStyle = p.blue ? "#1E90FF" : "#6929C4"; ctx!.fill();
+        ctx!.fillStyle = p.blue ? "#1B9FFF" : "#7B2FBE"; ctx!.fill();
         return true;
       });
 
@@ -122,7 +122,7 @@ export default function NeuralCanvas({ style }: { style?: React.CSSProperties })
         ctx!.beginPath(); ctx!.arc(n.x, n.y, r * 5, 0, Math.PI * 2);
         ctx!.fillStyle = grd; ctx!.fill();
         ctx!.beginPath(); ctx!.arc(n.x, n.y, r, 0, Math.PI * 2);
-        ctx!.fillStyle = n.hue === 265 ? "#6929C4" : "#1E90FF"; ctx!.fill();
+        ctx!.fillStyle = n.hue === 265 ? "#7B2FBE" : "#1B9FFF"; ctx!.fill();
       });
 
       frame++;

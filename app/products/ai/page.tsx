@@ -61,7 +61,7 @@ export default function AIPage() {
             <div className="anim-badge" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "6px 16px", borderRadius: "999px",
-              background: "rgba(59,15,140,0.3)", border: "1px solid rgba(105,41,196,0.4)",
+              background: "rgba(75,0,160,0.3)", border: "1px solid rgba(123,47,190,0.4)",
               marginBottom: "28px",
             }}>
               <span style={{
@@ -97,10 +97,10 @@ export default function AIPage() {
 
             <div className="anim-card-1" style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "44px" }}>
               <a href="/contact" style={{
-                background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
+                background: "linear-gradient(135deg, #4B00A0, #7B2FBE)",
                 color: "#fff", padding: "14px 30px", borderRadius: "10px",
                 fontWeight: 700, fontSize: "15px", textDecoration: "none",
-                boxShadow: "0 8px 28px rgba(59,15,140,0.55)",
+                boxShadow: "0 8px 28px rgba(75,0,160,0.55)",
               }}>Book a Live Demo</a>
               <a href="#aria" style={{
                 background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)",
@@ -143,7 +143,7 @@ export default function AIPage() {
               <AgentScreen
                 agentName="Aria"
                 agentLabel="Sales Agent · Store Kiosk"
-                agentColor="#1E90FF"
+                agentColor="#1B9FFF"
                 messages={ARIA_MSGS}
                 notification="Lead captured — Rahul Sharma • Interested in laptops ₹50k"
                 tilt="left"
@@ -159,7 +159,7 @@ export default function AIPage() {
               <AgentScreen
                 agentName="Bubly"
                 agentLabel="Education Agent · Student Kiosk"
-                agentColor="#6929C4"
+                agentColor="#7B2FBE"
                 messages={BUBLY_MSGS}
                 notification="📊 12 students asked about Newton's laws today"
                 tilt="right"
@@ -192,7 +192,7 @@ export default function AIPage() {
             <div>
               <span className="anim-badge" style={{
                 fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em",
-                textTransform: "uppercase", color: "#1E90FF",
+                textTransform: "uppercase", color: "#1B9FFF",
                 display: "inline-block", marginBottom: "16px",
               }}>Aria — Sales Agent</span>
 
@@ -222,7 +222,7 @@ export default function AIPage() {
                       width: "20px", height: "20px", borderRadius: "50%", flexShrink: 0,
                       background: "rgba(30,144,255,0.15)", border: "1px solid rgba(30,144,255,0.35)",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "10px", color: "#1E90FF", marginTop: "2px",
+                      fontSize: "10px", color: "#1B9FFF", marginTop: "2px",
                     }}>✓</div>
                     <div>
                       <div style={{ fontSize: "14px", fontWeight: 700, color: "rgba(255,255,255,0.85)", marginBottom: "2px" }}>{pt.title}</div>
@@ -237,7 +237,7 @@ export default function AIPage() {
                 background: "rgba(30,144,255,0.07)", border: "1px solid rgba(30,144,255,0.16)",
                 fontSize: "13px", color: "rgba(255,255,255,0.55)",
               }}>
-                Currently live at <span style={{ color: "#1E90FF", fontWeight: 600 }}>aBet Technology, Pune</span> — handling real customers on the showroom floor.
+                Currently live at <span style={{ color: "#1B9FFF", fontWeight: 600 }}>aBet Technology, Pune</span> — handling real customers on the showroom floor.
               </div>
             </div>
 
@@ -246,7 +246,7 @@ export default function AIPage() {
               <AgentScreen
                 agentName="Aria"
                 agentLabel="Sales Agent · Electronics Store"
-                agentColor="#1E90FF"
+                agentColor="#1B9FFF"
                 messages={[
                   { from: "user", text: "Bhai ₹50,000 mein best laptop kaun sa hai?" },
                   { from: "ai",   text: "Gaming ke liye ya office ke liye? Dono ke liye alag options hain!" },
@@ -265,13 +265,13 @@ export default function AIPage() {
       <section id="bubly" style={{
         background: "linear-gradient(180deg, #00050f 0%, #060014 100%)",
         padding: "100px 24px",
-        borderTop: "1px solid rgba(105,41,196,0.08)",
+        borderTop: "1px solid rgba(123,47,190,0.08)",
       }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           {/* Scene setter */}
           <div style={{
             padding: "20px 28px", borderRadius: "12px",
-            background: "rgba(105,41,196,0.07)", border: "1px solid rgba(105,41,196,0.18)",
+            background: "rgba(123,47,190,0.07)", border: "1px solid rgba(123,47,190,0.18)",
             marginBottom: "52px", display: "inline-block",
           }}>
             <span style={{ fontSize: "13px", color: "rgba(165,100,255,0.9)", fontStyle: "italic" }}>
@@ -285,7 +285,7 @@ export default function AIPage() {
               <AgentScreen
                 agentName="Bubly"
                 agentLabel="Education Agent · Coaching Centre"
-                agentColor="#6929C4"
+                agentColor="#7B2FBE"
                 messages={[
                   { from: "user", text: "Mujhe Newton's 2nd law samajh nahi aaya, exam kal hai" },
                   { from: "ai",   text: "Tension mat lo! F = ma — Force × Acceleration. 5 kg ki ball ko 20 N se push karo — acceleration hoga 4 m/s²." },
@@ -301,7 +301,7 @@ export default function AIPage() {
             <div>
               <span className="anim-badge" style={{
                 fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em",
-                textTransform: "uppercase", color: "#6929C4",
+                textTransform: "uppercase", color: "#7B2FBE",
                 display: "inline-block", marginBottom: "16px",
               }}>Bubly — Education Agent</span>
 
@@ -330,9 +330,9 @@ export default function AIPage() {
                   <div key={i} style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
                     <div style={{
                       width: "20px", height: "20px", borderRadius: "50%", flexShrink: 0,
-                      background: "rgba(105,41,196,0.15)", border: "1px solid rgba(105,41,196,0.35)",
+                      background: "rgba(123,47,190,0.15)", border: "1px solid rgba(123,47,190,0.35)",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "10px", color: "#6929C4", marginTop: "2px",
+                      fontSize: "10px", color: "#7B2FBE", marginTop: "2px",
                     }}>✓</div>
                     <div>
                       <div style={{ fontSize: "14px", fontWeight: 700, color: "rgba(255,255,255,0.85)", marginBottom: "2px" }}>{pt.title}</div>
@@ -344,7 +344,7 @@ export default function AIPage() {
 
               <div style={{
                 padding: "16px 20px", borderRadius: "12px",
-                background: "rgba(105,41,196,0.07)", border: "1px solid rgba(105,41,196,0.18)",
+                background: "rgba(123,47,190,0.07)", border: "1px solid rgba(123,47,190,0.18)",
                 fontSize: "13px", color: "rgba(255,255,255,0.55)",
               }}>
                 <span style={{ color: "#8B5CF6", fontWeight: 600 }}>Deployable in any school, coaching centre, or college</span> — on a kiosk, tablet, or your institution&apos;s website.
@@ -402,10 +402,10 @@ export default function AIPage() {
             border: "1px solid rgba(255,255,255,0.06)",
           }}>
             {[
-              { v: "1.2s",    l: "Time to first spoken reply",     c: "#1E90FF" },
-              { v: "5 days",  l: "From contract to live kiosk",    c: "#6929C4" },
-              { v: "24/7",    l: "Coverage with zero staff cost",  c: "#1E90FF" },
-              { v: "100%",    l: "On-premise — your data, always", c: "#6929C4" },
+              { v: "1.2s",    l: "Time to first spoken reply",     c: "#1B9FFF" },
+              { v: "5 days",  l: "From contract to live kiosk",    c: "#7B2FBE" },
+              { v: "24/7",    l: "Coverage with zero staff cost",  c: "#1B9FFF" },
+              { v: "100%",    l: "On-premise — your data, always", c: "#7B2FBE" },
             ].map((s, i) => (
               <div key={i} className={`anim-card-${i+1}`} style={{
                 padding: "36px 24px", textAlign: "center",
@@ -425,7 +425,7 @@ export default function AIPage() {
 
       {/* ════ CTA ════ */}
       <section style={{
-        background: "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(59,15,140,0.5) 0%, #000008 55%)",
+        background: "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(75,0,160,0.5) 0%, #000008 55%)",
         padding: "100px 24px",
         textAlign: "center",
         borderTop: "1px solid rgba(255,255,255,0.04)",
@@ -457,10 +457,10 @@ export default function AIPage() {
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/contact" style={{
-              background: "linear-gradient(135deg, #3B0F8C, #6929C4)",
+              background: "linear-gradient(135deg, #4B00A0, #7B2FBE)",
               color: "#fff", padding: "16px 36px", borderRadius: "12px",
               fontWeight: 700, fontSize: "16px", textDecoration: "none",
-              boxShadow: "0 12px 40px rgba(59,15,140,0.55)",
+              boxShadow: "0 12px 40px rgba(75,0,160,0.55)",
             }}>Book a Free Demo</a>
             <a
               href="https://wa.me/917400040673?text=Hi%2C%20I%27d%20like%20to%20see%20a%20live%20demo%20of%20the%20Emoqa%20AI%20Agent"

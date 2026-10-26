@@ -5,7 +5,7 @@ export default function AIOrb() {
       <div style={{
         position: "absolute", inset: "-60px",
         borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(59,15,140,0.3) 0%, transparent 65%)",
+        background: "radial-gradient(circle, rgba(75,0,160,0.3) 0%, transparent 65%)",
         animation: "glow-purple 4s ease-in-out infinite",
         pointerEvents: "none",
       }} />
@@ -14,17 +14,17 @@ export default function AIOrb() {
       <div className="spin-slow" style={{
         position: "absolute", inset: 0,
         borderRadius: "50%",
-        border: "1px solid rgba(105,41,196,0.2)",
+        border: "1px solid rgba(123,47,190,0.2)",
       }}>
         <div style={{
           position: "absolute", top: "-6px", left: "50%", transform: "translateX(-50%)",
           width: "12px", height: "12px", borderRadius: "50%",
-          background: "#6929C4", boxShadow: "0 0 10px #6929C4, 0 0 20px rgba(59,15,140,0.5)",
+          background: "#7B2FBE", boxShadow: "0 0 10px #7B2FBE, 0 0 20px rgba(75,0,160,0.5)",
         }} />
         <div style={{
           position: "absolute", bottom: "-5px", left: "30%",
           width: "10px", height: "10px", borderRadius: "50%",
-          background: "rgba(105,41,196,0.5)", boxShadow: "0 0 6px #6929C4",
+          background: "rgba(123,47,190,0.5)", boxShadow: "0 0 6px #7B2FBE",
         }} />
       </div>
 
@@ -37,12 +37,12 @@ export default function AIOrb() {
         <div style={{
           position: "absolute", top: "-5px", left: "50%", transform: "translateX(-50%)",
           width: "10px", height: "10px", borderRadius: "50%",
-          background: "#1E90FF", boxShadow: "0 0 10px #1E90FF, 0 0 20px rgba(30,144,255,0.4)",
+          background: "#1B9FFF", boxShadow: "0 0 10px #1B9FFF, 0 0 20px rgba(30,144,255,0.4)",
         }} />
         <div style={{
           position: "absolute", bottom: "-4px", right: "20%",
           width: "7px", height: "7px", borderRadius: "50%",
-          background: "rgba(30,144,255,0.6)", boxShadow: "0 0 6px #1E90FF",
+          background: "rgba(30,144,255,0.6)", boxShadow: "0 0 6px #1B9FFF",
         }} />
       </div>
 
@@ -64,8 +64,8 @@ export default function AIOrb() {
       <div style={{
         position: "absolute", inset: "70px",
         borderRadius: "50%",
-        background: "radial-gradient(circle at 38% 32%, rgba(130,60,220,0.95), rgba(59,15,140,1) 55%, rgba(0,5,20,1))",
-        boxShadow: "0 0 40px rgba(59,15,140,0.8), 0 0 80px rgba(59,15,140,0.3), inset 0 0 30px rgba(105,41,196,0.15)",
+        background: "radial-gradient(circle at 38% 32%, rgba(130,60,220,0.95), rgba(75,0,160,1) 55%, rgba(0,5,20,1))",
+        boxShadow: "0 0 40px rgba(75,0,160,0.8), 0 0 80px rgba(75,0,160,0.3), inset 0 0 30px rgba(123,47,190,0.15)",
         display: "flex", alignItems: "center", justifyContent: "center",
         overflow: "hidden",
       }}>

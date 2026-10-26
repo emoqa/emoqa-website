@@ -1,12 +1,12 @@
 "use client";
 
 const steps = [
-  { id: "vad",    label: "VAD",    sub: "Voice Activity Detection", color: "#6929C4" },
-  { id: "stt",    label: "Whisper",sub: "Speech → Text",            color: "#3B0F8C" },
-  { id: "rag",    label: "RAG",    sub: "Qdrant Vector Search",     color: "#1E90FF" },
-  { id: "llm",    label: "LLM",    sub: "Ollama qwen3:14b",         color: "#3B0F8C" },
-  { id: "tts",    label: "TTS",    sub: "Text → Audio Stream",      color: "#6929C4" },
-  { id: "avatar", label: "Avatar", sub: "VRM Lipsync + Board",      color: "#1E90FF" },
+  { id: "vad",    label: "VAD",    sub: "Voice Activity Detection", color: "#7B2FBE" },
+  { id: "stt",    label: "Whisper",sub: "Speech → Text",            color: "#4B00A0" },
+  { id: "rag",    label: "RAG",    sub: "Qdrant Vector Search",     color: "#1B9FFF" },
+  { id: "llm",    label: "LLM",    sub: "Ollama qwen3:14b",         color: "#4B00A0" },
+  { id: "tts",    label: "TTS",    sub: "Text → Audio Stream",      color: "#7B2FBE" },
+  { id: "avatar", label: "Avatar", sub: "VRM Lipsync + Board",      color: "#1B9FFF" },
 ];
 
 export default function PipelineFlow() {
@@ -73,8 +73,8 @@ export default function PipelineFlow() {
                   <polygon points="24,2 32,6 24,10" fill={steps[i + 1].color} opacity="0.7" />
                   <defs>
                     <linearGradient id="arrow-grad" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#3B0F8C" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#1E90FF" stopOpacity="0.8" />
+                      <stop offset="0%" stopColor="#4B00A0" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#1B9FFF" stopOpacity="0.8" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -94,12 +94,12 @@ export default function PipelineFlow() {
       }}>
         <span style={{
           width: "8px", height: "8px", borderRadius: "50%",
-          background: "#1E90FF",
+          background: "#1B9FFF",
           display: "inline-block",
           animation: "pulse-ring 1.5s ease-out infinite",
         }} />
         <span style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>
-          First audio response in <span style={{ color: "#1E90FF" }}>1.2 seconds</span> — NDJSON streaming, no full-response wait
+          First audio response in <span style={{ color: "#1B9FFF" }}>1.2 seconds</span> — NDJSON streaming, no full-response wait
         </span>
       </div>
     </div>

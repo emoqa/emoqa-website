@@ -10,10 +10,10 @@ const features = [
 ];
 
 const stack = [
-  { label: "Android Kiosk", tech: "Kotlin · Jetpack Compose · Room · Hilt · WorkManager", accent: "#3B0F8C" },
-  { label: "Backend", tech: "Node.js 22 ESM · Fastify 4 · PM2 · PostgreSQL", accent: "#3B0F8C" },
-  { label: "Vendor Portal", tech: "React · Vite · Tailwind CSS · Deployed at cms.emoqa.in", accent: "#3B0F8C" },
-  { label: "Admin Panel", tech: "React · Deployed at cmsadmin.emoqa.in", accent: "#3B0F8C" },
+  { label: "Android Kiosk", tech: "Kotlin · Jetpack Compose · Room · Hilt · WorkManager", accent: "#4B00A0" },
+  { label: "Backend", tech: "Node.js 22 ESM · Fastify 4 · PM2 · PostgreSQL", accent: "#4B00A0" },
+  { label: "Vendor Portal", tech: "React · Vite · Tailwind CSS · Deployed at cms.emoqa.in", accent: "#4B00A0" },
+  { label: "Admin Panel", tech: "React · Deployed at cmsadmin.emoqa.in", accent: "#4B00A0" },
 ];
 
 export default function CMSPage() {
@@ -25,8 +25,8 @@ export default function CMSPage() {
           <div className="anim-badge" style={{
             display: "inline-flex", alignItems: "center",
             padding: "6px 18px", borderRadius: "999px",
-            background: "rgba(59,15,140,0.07)", color: "#3B0F8C",
-            border: "1px solid rgba(59,15,140,0.15)",
+            background: "rgba(75,0,160,0.07)", color: "#4B00A0",
+            border: "1px solid rgba(75,0,160,0.15)",
             fontSize: "13px", fontWeight: 600, marginBottom: "32px",
           }}>
             Digital Signage Platform · v2.3.4 Build 29
@@ -67,7 +67,7 @@ export default function CMSPage() {
                 className={`hover-lift anim-card-${Math.min(i + 1, 6)}`}
                 style={{ padding: "48px 36px", background: "#fff" }}
               >
-                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(59,15,140,0.35)", marginBottom: "20px" }}>{f.num}</p>
+                <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(75,0,160,0.35)", marginBottom: "20px" }}>{f.num}</p>
                 <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "12px", letterSpacing: "-0.02em" }}>{f.title}</h3>
                 <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>{f.desc}</p>
               </div>
@@ -102,7 +102,7 @@ export default function CMSPage() {
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(255,255,255,0.08)",
               }}>
-                <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "4px" }}>{label}</p>
+                <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "4px" }}>{label}</p>
                 <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)", fontFamily: "monospace" }}>{val}</p>
               </div>
             ))}

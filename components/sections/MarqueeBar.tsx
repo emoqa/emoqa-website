@@ -36,7 +36,7 @@ export default function MarqueeBar() {
           >
             <span
               className="w-1 h-1 rounded-full flex-shrink-0"
-              style={{ background: "#3B0F8C" }}
+              style={{ background: "#4B00A0" }}
             />
             {tag}
           </span>

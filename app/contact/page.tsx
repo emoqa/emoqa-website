@@ -6,7 +6,7 @@ export default function ContactPage() {
 
           {/* Left */}
           <div>
-            <p className="anim-badge" style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+            <p className="anim-badge" style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
               Get in Touch
             </p>
             <h1 className="anim-h1" style={{ fontSize: "clamp(36px,5vw,64px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "24px" }}>
@@ -29,7 +29,7 @@ export default function ContactPage() {
                     {item.label}
                   </p>
                   {item.href ? (
-                    <a href={item.href} style={{ fontSize: "17px", fontWeight: 500, color: "#3B0F8C", textDecoration: "none" }}>
+                    <a href={item.href} style={{ fontSize: "17px", fontWeight: 500, color: "#4B00A0", textDecoration: "none" }}>
                       {item.value}
                     </a>
                   ) : (
@@ -115,7 +115,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                style={{ padding: "15px 32px", borderRadius: "999px", background: "#3B0F8C", color: "#fff", fontSize: "15px", fontWeight: 700, border: "none", cursor: "pointer" }}
+                style={{ padding: "15px 32px", borderRadius: "999px", background: "#4B00A0", color: "#fff", fontSize: "15px", fontWeight: 700, border: "none", cursor: "pointer" }}
               >
                 Send Message
               </button>

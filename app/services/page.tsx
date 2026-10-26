@@ -2,25 +2,25 @@ import CTA from "@/components/sections/CTA";
 
 const services = [
   {
-    num: "01", color: "#3B0F8C", bg: "rgba(59,15,140,0.07)",
+    num: "01", color: "#4B00A0", bg: "rgba(75,0,160,0.07)",
     name: "Android & iOS Apps",
     desc: "Native mobile applications built for performance and scale. From consumer apps with millions of users to enterprise tools with strict security requirements.",
     tags: ["Kotlin", "Swift", "React Native", "Jetpack Compose"],
   },
   {
-    num: "02", color: "#1E90FF", bg: "rgba(30,144,255,0.07)",
+    num: "02", color: "#1B9FFF", bg: "rgba(30,144,255,0.07)",
     name: "Web Development",
     desc: "Full-stack web applications, portals, dashboards, and e-commerce platforms. Fast, SEO-optimised, and built to handle enterprise workloads.",
     tags: ["Next.js", "React", "Node.js", "PostgreSQL"],
   },
   {
-    num: "03", color: "#F5A01A", bg: "rgba(245,160,26,0.07)",
+    num: "03", color: "#F7941D", bg: "rgba(247,148,29,0.07)",
     name: "IoT & Hardware",
     desc: "End-to-end IoT solutions — from sensor selection and PCB design to firmware development and cloud connectivity. Prototypes to mass production.",
     tags: ["Firmware", "PCB Design", "MQTT", "Edge Computing"],
   },
   {
-    num: "04", color: "#3B0F8C", bg: "rgba(59,15,140,0.07)",
+    num: "04", color: "#4B00A0", bg: "rgba(75,0,160,0.07)",
     name: "AI & Machine Learning",
     desc: "Custom AI models, LLM-powered agents, computer vision, NLP, and RAG pipelines. Deployed on-premise or cloud — wherever your data lives.",
     tags: ["LLM", "Computer Vision", "NLP", "RAG"],
@@ -32,13 +32,13 @@ const services = [
     tags: ["Solidity", "Web3", "Smart Contracts", "DeFi"],
   },
   {
-    num: "06", color: "#1E90FF", bg: "rgba(30,144,255,0.07)",
+    num: "06", color: "#1B9FFF", bg: "rgba(30,144,255,0.07)",
     name: "AR / VR",
     desc: "Immersive experiences for training, retail, real estate, and entertainment. AR product configurators, VR simulations, and mixed reality dashboards.",
     tags: ["Unity", "ARKit", "ARCore", "WebXR"],
   },
   {
-    num: "07", color: "#F5A01A", bg: "rgba(245,160,26,0.07)",
+    num: "07", color: "#F7941D", bg: "rgba(247,148,29,0.07)",
     name: "Desktop Applications",
     desc: "Cross-platform Windows, macOS, and Linux applications. Kiosk software, professional tools, and offline-first enterprise applications.",
     tags: ["Electron", "Tauri", ".NET", "Qt"],
@@ -57,7 +57,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section style={{ paddingTop: "140px", paddingBottom: "100px", paddingLeft: "24px", paddingRight: "24px", background: "#fff" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
             Capabilities
           </p>
           <h1 style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "28px" }}>

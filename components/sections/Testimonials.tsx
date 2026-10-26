@@ -5,7 +5,7 @@ const testimonials = [
     name: "Operations Director",
     company: "Retail Chain, Maharashtra",
     domain: "Digital Signage",
-    accent: "#3B0F8C",
+    accent: "#4B00A0",
   },
   {
     quote:
@@ -21,7 +21,7 @@ const testimonials = [
     name: "Chief Executive Officer",
     company: "Manufacturing Company, Pune",
     domain: "AI Agent",
-    accent: "#1E90FF",
+    accent: "#1B9FFF",
   },
 ];
 

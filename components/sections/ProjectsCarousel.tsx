@@ -6,8 +6,8 @@ import Link from "next/link";
 const projects = [
   {
     tag: "Digital Signage Platform",
-    accent: "#3B0F8C",
-    accentBg: "rgba(59,15,140,0.07)",
+    accent: "#4B00A0",
+    accentBg: "rgba(75,0,160,0.07)",
     num: "01",
     name: "Emoqa Sync",
     version: "v2.3.4  ·  Build 29  ·  Self-hosted",
@@ -44,7 +44,7 @@ const projects = [
   },
   {
     tag: "AI Digital Human Agent",
-    accent: "#1E90FF",
+    accent: "#1B9FFF",
     accentBg: "rgba(30,144,255,0.07)",
     num: "03",
     name: "AI Agent Suite",
@@ -91,7 +91,7 @@ export default function ProjectsCarousel() {
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         {/* Section label */}
         <div style={{ textAlign: "center", marginBottom: "72px" }}>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#3B0F8C", marginBottom: "20px" }}>
+          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
             Proprietary Products
           </p>
           <h2 style={{ fontSize: "clamp(38px,5.5vw,64px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.07, color: "#1D1D1F" }}>

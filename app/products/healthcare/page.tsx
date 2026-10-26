@@ -32,7 +32,7 @@ export default function HealthcarePage() {
             Health ATM · 43 Tests · 4 Modes · CE Marked Hardware
           </div>
           <h1 className="anim-h1" style={{ fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "28px" }}>
-            <span style={{ background: "linear-gradient(135deg, #00A651, #1E90FF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(135deg, #00A651, #1B9FFF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Emoqa Health Kiosk
             </span>
             <br />Walk in. Walk out with a diagnosis.
