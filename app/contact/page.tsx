@@ -21,7 +21,7 @@ export default function ContactPage() {
               {[
                 { label: "Email", value: "sales@emoqa.in", href: "mailto:sales@emoqa.in" },
                 { label: "Phone / WhatsApp", value: "+91 7400040673", href: "https://wa.me/917400040673?text=Hi%20Emoqa!" },
-                { label: "Address", value: "Gokul Nagar, Katraj, Pune, Maharashtra, India", href: null },
+                { label: "Address", value: "Emoqa Pvt. Ltd., Lane No. 04, Opp. Jack & Jill School, Gokul Nagar, Katraj, Pune, Maharashtra 411046", href: null },
                 { label: "Response Time", value: "Within 24 hours", href: null },
               ].map((item) => (
                 <div key={item.label}>

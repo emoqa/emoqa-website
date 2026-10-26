@@ -42,7 +42,7 @@ export default function Footer() {
                 +91 7400040673
               </a>
               <p style={{ fontSize: "13px", color: "#6E6E73", lineHeight: 1.5 }}>
-                Gokul Nagar, Katraj,<br />Pune, Maharashtra, India
+                Emoqa Pvt. Ltd.<br />Lane No. 04, Opp. Jack & Jill School,<br />Gokul Nagar, Katraj,<br />Pune, Maharashtra 411046
               </p>
             </div>
 

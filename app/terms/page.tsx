@@ -102,7 +102,7 @@ export default function TermsPage() {
           </h1>
           <p style={{ fontSize: "16px", color: "#6E6E73", lineHeight: 1.7 }}>
             Effective date: October 20, 2026. These terms govern your use of Emoqa Technologies products and services.
-            Registered office: Gokul Nagar, Katraj, Pune, Maharashtra, India.
+            Registered office: Emoqa Pvt. Ltd., Lane No. 04, Opp. Jack &amp; Jill School, Gokul Nagar, Katraj, Pune, Maharashtra 411046.
           </p>
         </div>
 
