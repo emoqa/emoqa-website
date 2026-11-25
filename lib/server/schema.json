@@ -1,0 +1,13 @@
+[
+  "CREATE TABLE IF NOT EXISTS admin (\n  id INTEGER PRIMARY KEY CHECK (id = 1),\n  username TEXT NOT NULL,\n  password_hash TEXT NOT NULL\n)",
+  "CREATE TABLE IF NOT EXISTS sessions (\n  token_hash TEXT PRIMARY KEY,\n  expires_at INTEGER NOT NULL\n)",
+  "CREATE TABLE IF NOT EXISTS posts (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  slug TEXT NOT NULL UNIQUE,\n  title TEXT NOT NULL,\n  excerpt TEXT NOT NULL DEFAULT '',\n  content TEXT NOT NULL DEFAULT '',\n  cover TEXT NOT NULL DEFAULT '',\n  cover_alt TEXT NOT NULL DEFAULT '',\n  category TEXT NOT NULL DEFAULT '',\n  tags TEXT NOT NULL DEFAULT '[]',\n  author TEXT NOT NULL DEFAULT '',\n  accent TEXT NOT NULL DEFAULT '#4B00A0',\n  icon TEXT NOT NULL DEFAULT 'signage',\n  title_font TEXT NOT NULL DEFAULT '',\n  body_font TEXT NOT NULL DEFAULT '',\n  seo_title TEXT NOT NULL DEFAULT '',\n  seo_description TEXT NOT NULL DEFAULT '',\n  status TEXT NOT NULL CHECK (status IN ('draft', 'published', 'trash')),\n  publish_at TEXT,\n  created_at TEXT NOT NULL,\n  updated_at TEXT NOT NULL\n)",
+  "CREATE INDEX IF NOT EXISTS posts_public ON posts (status, publish_at)",
+  "CREATE TABLE IF NOT EXISTS revisions (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  post_id INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,\n  title TEXT NOT NULL,\n  content TEXT NOT NULL,\n  created_at TEXT NOT NULL\n)",
+  "CREATE TABLE IF NOT EXISTS media (\n  name TEXT PRIMARY KEY,\n  original TEXT NOT NULL,\n  type TEXT NOT NULL,\n  size INTEGER NOT NULL,\n  created_at TEXT NOT NULL\n)",
+  "CREATE TABLE IF NOT EXISTS inquiries (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  name TEXT NOT NULL,\n  organization TEXT NOT NULL DEFAULT '',\n  email TEXT NOT NULL,\n  phone TEXT NOT NULL DEFAULT '',\n  interest TEXT NOT NULL,\n  requirements TEXT NOT NULL,\n  timeline TEXT NOT NULL DEFAULT '',\n  budget TEXT NOT NULL DEFAULT '',\n  created_at TEXT NOT NULL\n)",
+  "CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
+  "CREATE TABLE IF NOT EXISTS media_files (name TEXT PRIMARY KEY, bytes BLOB NOT NULL)",
+  "CREATE TABLE IF NOT EXISTS attempts (id INTEGER PRIMARY KEY AUTOINCREMENT, key TEXT NOT NULL, at INTEGER NOT NULL)",
+  "CREATE INDEX IF NOT EXISTS attempts_key ON attempts (key, at)"
+]

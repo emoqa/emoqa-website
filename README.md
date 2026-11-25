@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Blog admin portal
+
+- Write posts at `/admin`. Create the login, or reset its password, with `npm run admin:password`.
+- Posts, the login and uploaded images live in `data/` (git-ignored). Back this folder up.
+- Set `BLOG_DATA_DIR` to keep that folder somewhere else. In production it must be outside the deploy folder.
+- The site now needs a Node 22 server instead of static hosting. See [deploy/README.md](deploy/README.md).
+
+## Products and inquiries
+
+- Product pages are data: add a file in `content/products/` and list it in `content/products/index.ts`.
+- Contact form messages are stored in the same database as the blog. Read them at `/admin/inquiries`.

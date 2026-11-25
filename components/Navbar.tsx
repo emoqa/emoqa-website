@@ -1,284 +1,140 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Logo from "@/components/site/Logo";
 
-const products = [
-  {
-    name: "Emoqa Sync",
-    tagline: "Digital signage platform",
-    href: "/products/cms",
-    color: "#4B00A0",
-    dot: "#4B00A0",
-  },
-  {
-    name: "Emoqa Health Kiosk",
-    tagline: "43-test health ATM",
-    href: "/products/healthcare",
-    color: "#00A651",
-    dot: "#00A651",
-  },
-  {
-    name: "AI Agent Suite",
-    tagline: "Conversational AI on kiosks",
-    href: "/products/ai",
-    color: "#1B9FFF",
-    dot: "#1B9FFF",
-  },
+export type MenuItem = { label: string; note: string; href: string };
+
+const plainLinks = [
+  { label: "Industries", href: "/industries" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blogs" },
 ];
 
-const navLinks = [
-  { label: "Services", href: "/services" },
-  { label: "About",    href: "/about" },
-  { label: "Contact",  href: "/contact" },
-];
-
-export default function Navbar() {
-  const [scrolled,     setScrolled]     = useState(false);
-  const [mobileOpen,   setMobileOpen]   = useState(false);
-  const [mobileProds,  setMobileProds]  = useState(false);
-  const [dropOpen,     setDropOpen]     = useState(false);
-  const dropRef = useRef<HTMLDivElement>(null);
+export default function Navbar({ products, services }: { products: MenuItem[]; services: MenuItem[] }) {
+  const path = usePathname().replace(/\/$/, "") || "/";
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState<string | null>(null);
+  const [mobile, setMobile] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // close dropdown on outside click
+  // Close menus after navigating.
+  const [lastPath, setLastPath] = useState(path);
+  if (lastPath !== path) {
+    setLastPath(path);
+    setOpen(null);
+    setMobile(false);
+  }
+
   useEffect(() => {
-    function handler(e: MouseEvent) {
-      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
-        setDropOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(null);
+      setMobile(false);
+    };
+    const onDown = (e: PointerEvent) => {
+      if (!headerRef.current?.contains(e.target as Node)) setOpen(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onDown);
+    };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-open", mobile);
+    return () => document.documentElement.classList.remove("menu-open");
+  }, [mobile]);
+
+  const menus = [
+    { id: "products", label: "Products", items: products, all: { label: "All products", href: "/products" }, root: "/products" },
+    { id: "solutions", label: "Solutions", items: services, all: { label: "Have a different problem?", href: "/custom-solutions" }, root: "/services" },
+  ];
+
   return (
-    <header style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-      transition: "background 0.3s, box-shadow 0.3s",
-      background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
-      backdropFilter: scrolled ? "blur(14px)" : undefined,
-      boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.07)" : undefined,
-    }}>
-      <div style={{
-        maxWidth: "1200px", margin: "0 auto",
-        padding: "0 24px", height: "64px",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-      }}>
-        {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-          <Image src="/logo.png" alt="Emoqa" width={34} height={34} style={{ objectFit: "contain" }} />
-          <span style={{ fontSize: "19px", fontWeight: 800, letterSpacing: "-0.02em", color: "#4B00A0" }}>emoqa</span>
-        </Link>
+    <header ref={headerRef} className="hdr" data-solid={scrolled || open || mobile ? "" : undefined}>
+      <div className="wrap hdr-row">
+        <Link href="/" aria-label="EMOQA home" className="hdr-logo"><Logo /></Link>
 
-        {/* Desktop nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "32px" }} className="hidden md:flex">
-          {/* Products dropdown */}
-          <div
-            ref={dropRef}
-            style={{ position: "relative" }}
-            onMouseEnter={() => setDropOpen(true)}
-            onMouseLeave={() => setDropOpen(false)}
-          >
-            <button
-              onClick={() => setDropOpen(o => !o)}
-              style={{
-                display: "flex", alignItems: "center", gap: "4px",
-                fontSize: "14px", fontWeight: 500,
-                color: dropOpen ? "#4B00A0" : "#1D1D1F",
-                background: "none", border: "none", cursor: "pointer",
-                padding: 0, transition: "color 0.2s",
-              }}
+        <nav aria-label="Main" className="hdr-nav">
+          <Link href="/" className="hdr-link" aria-current={path === "/" ? "page" : undefined}>Home</Link>
+          {menus.map((m) => (
+            <div
+              key={m.id}
+              className="hdr-menu"
+              onPointerEnter={(e) => e.pointerType === "mouse" && setOpen(m.id)}
+              onPointerLeave={(e) => e.pointerType === "mouse" && setOpen(null)}
             >
-              Products
-              <ChevronDown
-                size={14}
-                style={{
-                  transition: "transform 0.2s",
-                  transform: dropOpen ? "rotate(180deg)" : "rotate(0deg)",
-                }}
-              />
-            </button>
-
-            {/* Dropdown panel */}
-            {dropOpen && (
-              <div style={{
-                position: "absolute", top: "calc(100% + 14px)", left: "50%",
-                transform: "translateX(-50%)",
-                background: "#fff",
-                border: "1px solid rgba(0,0,0,0.08)",
-                borderRadius: "18px",
-                padding: "10px",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.06)",
-                minWidth: "280px",
-                animation: "fadeUp 0.18s ease forwards",
-              }}>
-                {products.map((p, i) => (
-                  <Link
-                    key={p.href}
-                    href={p.href}
-                    onClick={() => setDropOpen(false)}
-                    style={{
-                      display: "flex", alignItems: "center", gap: "14px",
-                      padding: "13px 16px", borderRadius: "12px",
-                      textDecoration: "none",
-                      transition: "background 0.15s",
-                      background: "transparent",
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,0,0,0.035)")}
-                    onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-                  >
-                    <div style={{
-                      width: "36px", height: "36px", borderRadius: "10px", flexShrink: 0,
-                      background: `${p.color}12`,
-                      border: `1px solid ${p.color}25`,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                    }}>
-                      <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: p.dot }} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: "14px", fontWeight: 700, color: "#1D1D1F", lineHeight: 1.3 }}>{p.name}</div>
-                      <div style={{ fontSize: "12px", color: "#6E6E73", marginTop: "2px" }}>{p.tagline}</div>
-                    </div>
-                  </Link>
-                ))}
+              <button
+                type="button"
+                className="hdr-link"
+                aria-expanded={open === m.id}
+                aria-controls={`menu-${m.id}`}
+                data-active={path.startsWith(m.root) ? "" : undefined}
+                onClick={(e) => setOpen((o) => (o === m.id && e.detail === 0 ? null : m.id))}
+              >
+                {m.label}
+                <ChevronDown size={15} aria-hidden />
+              </button>
+              <div id={`menu-${m.id}`} className="hdr-panel" hidden={open !== m.id}>
+                <ul>
+                  {m.items.map((i) => (
+                    <li key={i.href}>
+                      <Link href={i.href} aria-current={path === i.href ? "page" : undefined}>
+                        <strong>{i.label}</strong>
+                        <span>{i.note}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link href={m.all.href} className="hdr-all">{m.all.label}</Link>
               </div>
-            )}
-          </div>
-
-          {/* Other links */}
-          {navLinks.map(l => (
-            <Link
-              key={l.href}
-              href={l.href}
-              style={{
-                fontSize: "14px", fontWeight: 500,
-                color: "#1D1D1F", textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#4B00A0")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#1D1D1F")}
-            >
-              {l.label}
-            </Link>
+            </div>
+          ))}
+          {plainLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="hdr-link" aria-current={path.startsWith(l.href) ? "page" : undefined}>{l.label}</Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex" style={{ display: "flex", alignItems: "center" }}>
-          <Link
-            href="/contact"
-            style={{
-              fontSize: "13px", fontWeight: 700,
-              padding: "10px 22px", borderRadius: "999px",
-              background: "#4B00A0", color: "#fff",
-              textDecoration: "none", transition: "opacity 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
-            onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-          >
-            Get in Touch
-          </Link>
-        </div>
+        <Link href="/contact" className="btn btn-sm hdr-cta">Contact</Link>
 
-        {/* Hamburger */}
-        <button
-          onClick={() => setMobileOpen(o => !o)}
-          aria-label="Toggle menu"
-          className="md:hidden"
-          style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", color: "#1D1D1F" }}
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+        <button type="button" className="hdr-burger" aria-label={mobile ? "Close menu" : "Open menu"} aria-expanded={mobile} aria-controls="mobile-menu" onClick={() => setMobile((v) => !v)}>
+          {mobile ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div style={{
-          background: "#fff",
-          borderTop: "1px solid rgba(0,0,0,0.07)",
-          padding: "16px 24px 24px",
-          display: "flex", flexDirection: "column", gap: "4px",
-        }}>
-          {/* Products accordion */}
-          <button
-            onClick={() => setMobileProds(o => !o)}
-            style={{
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "12px 0", background: "none", border: "none",
-              fontSize: "15px", fontWeight: 600, color: "#1D1D1F",
-              cursor: "pointer", width: "100%",
-            }}
-          >
-            Products
-            <ChevronDown
-              size={16}
-              style={{ transition: "transform 0.2s", transform: mobileProds ? "rotate(180deg)" : "rotate(0deg)" }}
-            />
-          </button>
-
-          {mobileProds && (
-            <div style={{ paddingLeft: "12px", display: "flex", flexDirection: "column", gap: "2px", marginBottom: "8px" }}>
-              {products.map(p => (
-                <Link
-                  key={p.href}
-                  href={p.href}
-                  onClick={() => { setMobileOpen(false); setMobileProds(false); }}
-                  style={{
-                    display: "flex", alignItems: "center", gap: "12px",
-                    padding: "11px 12px", borderRadius: "10px",
-                    textDecoration: "none", background: "rgba(0,0,0,0.025)",
-                    marginBottom: "4px",
-                  }}
-                >
-                  <div style={{
-                    width: "8px", height: "8px", borderRadius: "50%",
-                    background: p.dot, flexShrink: 0,
-                  }} />
-                  <div>
-                    <div style={{ fontSize: "14px", fontWeight: 700, color: "#1D1D1F" }}>{p.name}</div>
-                    <div style={{ fontSize: "12px", color: "#6E6E73" }}>{p.tagline}</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {navLinks.map(l => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                padding: "12px 0", fontSize: "15px", fontWeight: 600,
-                color: "#1D1D1F", textDecoration: "none",
-                borderTop: "1px solid rgba(0,0,0,0.05)",
-              }}
-            >
-              {l.label}
-            </Link>
+      <div id="mobile-menu" className="mob" hidden={!mobile}>
+        <nav aria-label="Mobile" className="wrap">
+          <Link href="/" className="mob-link" onClick={() => setMobile(false)}>Home</Link>
+          {menus.map((m) => (
+            <details key={m.id} className="mob-group">
+              <summary className="mob-link">{m.label}<ChevronDown size={18} aria-hidden /></summary>
+              <ul>
+                {m.items.map((i) => (
+                  <li key={i.href}><Link href={i.href} onClick={() => setMobile(false)}><strong>{i.label}</strong><span>{i.note}</span></Link></li>
+                ))}
+                <li><Link href={m.all.href} onClick={() => setMobile(false)}><strong>{m.all.label}</strong></Link></li>
+              </ul>
+            </details>
           ))}
-
-          <Link
-            href="/contact"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              marginTop: "12px", padding: "13px",
-              borderRadius: "12px", background: "#4B00A0",
-              color: "#fff", textAlign: "center",
-              fontSize: "14px", fontWeight: 700, textDecoration: "none",
-            }}
-          >
-            Get in Touch
-          </Link>
-        </div>
-      )}
+          {[...plainLinks, { label: "Projects", href: "/projects" }].map((l) => (
+            <Link key={l.href} href={l.href} className="mob-link" onClick={() => setMobile(false)}>{l.label}</Link>
+          ))}
+          <Link href="/contact" className="btn" onClick={() => setMobile(false)}>Contact</Link>
+        </nav>
+      </div>
     </header>
   );
 }

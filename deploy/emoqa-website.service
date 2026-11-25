@@ -1,0 +1,24 @@
+[Unit]
+Description=Emoqa website and blog
+After=network.target
+
+[Service]
+User=emoqa
+WorkingDirectory=/var/www/emoqa-app/current
+ExecStart=/usr/bin/env node --disable-warning=ExperimentalWarning server.js
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3010
+Environment=BLOG_DATA_DIR=/var/lib/emoqa-blog
+# Creates /var/lib/emoqa-blog, owned by the emoqa user.
+StateDirectory=emoqa-blog
+StateDirectoryMode=0700
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

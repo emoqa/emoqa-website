@@ -1,130 +1,62 @@
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/components/site/Logo";
+import { products } from "@/content/products";
+import { services } from "@/content/services";
+import { contact } from "@/content/site";
 
-const footerLinks = {
-  Products: [
-    { label: "Emoqa Sync (CMS)", href: "/products/cms" },
-    { label: "Health Kiosk", href: "/products/healthcare" },
-    { label: "AI Agent Suite", href: "/products/ai" },
-  ],
-  Services: [
-    { label: "Mobile Apps", href: "/services" },
-    { label: "Web Development", href: "/services" },
-    { label: "IoT & Hardware", href: "/services" },
-    { label: "AI Solutions", href: "/services" },
-  ],
-  Company: [
-    { label: "About Us", href: "/about" },
-    { label: "Contact", href: "/contact" },
-    { label: "Terms & Conditions", href: "/terms" },
-  ],
-};
+const columns = [
+  { title: "Products", links: products.map((p) => ({ label: p.short, href: `/products/${p.slug}` })) },
+  { title: "Solutions", links: [...services.map((s) => ({ label: s.name, href: `/services/${s.slug}` })), { label: "Custom Solutions", href: "/custom-solutions" }] },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Industries", href: "/industries" },
+      { label: "Projects", href: "/projects" },
+      { label: "Blog", href: "/blogs" },
+      { label: "Contact", href: "/contact" },
+      { label: "Terms & Conditions", href: "/terms" },
+    ],
+  },
+];
+
+const social = [
+  { label: "Instagram", href: "https://www.instagram.com/emoqasocial/", d: "M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.500 4.500 0 0 1 0-9zm0 2a2.500 2.500 0 1 0 0 5 2.500 2.500 0 0 0 0-5zM17.500 5.500a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/145303198/", d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" },
+  { label: "X", href: "https://x.com/emoqapvtltd", d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" },
+];
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#F5F5F7", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "80px 24px 48px" }}>
-        <div className="r-footer-grid" style={{ marginBottom: "64px" }}>
-          {/* Brand */}
-          <div>
-            <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", marginBottom: "20px" }}>
-              <Image src="/logo.png" alt="Emoqa" width={28} height={28} style={{ objectFit: "contain" }} />
-              <span style={{ fontSize: "17px", fontWeight: 700, color: "#4B00A0", letterSpacing: "-0.02em" }}>emoqa</span>
-            </Link>
-            <p style={{ fontSize: "14px", color: "#6E6E73", lineHeight: 1.7, maxWidth: "240px", marginBottom: "20px" }}>
-              Where emotion meets excellence. Full-stack technology company building hardware, software, and AI products across industries.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <a href="mailto:sales@emoqa.in" style={{ fontSize: "14px", fontWeight: 600, color: "#4B00A0", textDecoration: "none" }}>
-                sales@emoqa.in
-              </a>
-              <a href="tel:+917400040673" style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>
-                +91 7400040673
-              </a>
-              <p style={{ fontSize: "13px", color: "#6E6E73", lineHeight: 1.5 }}>
-                Emoqa Pvt. Ltd.<br />Lane No. 04, Opp. Jack & Jill School,<br />Gokul Nagar, Katraj,<br />Pune, Maharashtra 411046
-              </p>
-            </div>
-
-            {/* Social links */}
-            <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/emoqasocial/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="footer-social"
-              >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <circle cx="12" cy="12" r="4"/>
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                </svg>
-              </a>
-
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/company/145303198/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="footer-social"
-              >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
-                </svg>
-              </a>
-
-              {/* X / Twitter */}
-              <a
-                href="https://x.com/emoqapvtltd"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="footer-social"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-            </div>
+    <footer className="ftr on-dark">
+      <div className="wrap">
+        <div className="ftr-grid">
+          <div className="ftr-brand">
+            <Link href="/" aria-label="EMOQA home"><Logo mono="#fff" /></Link>
+            <p className="ftr-tag">where emotion meets excellence.</p>
+            <address>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              <a href={contact.phoneHref}>{contact.phone}</a>
+              <span>{contact.company}<br />{contact.address.map((l) => <span key={l}>{l}<br /></span>)}</span>
+            </address>
+            <ul className="ftr-social">
+              {social.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" aria-hidden><path d={s.d} /></svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          {/* Link columns */}
-          {Object.entries(footerLinks).map(([group, links]) => (
-            <div key={group}>
-              <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#1D1D1F", marginBottom: "20px" }}>
-                {group}
-              </p>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "14px" }}>
-                {links.map((l) => (
-                  <li key={l.label}>
-                    <Link href={l.href} style={{ fontSize: "14px", color: "#6E6E73", textDecoration: "none" }}>
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {columns.map((c) => (
+            <nav key={c.title} aria-label={c.title}>
+              <h2>{c.title}</h2>
+              <ul>{c.links.map((l) => <li key={l.href}><Link href={l.href}>{l.label}</Link></li>)}</ul>
+            </nav>
           ))}
         </div>
-
-        {/* Bottom bar */}
-        <div className="r-footer-bottom" style={{
-          paddingTop: "28px",
-          borderTop: "1px solid rgba(0,0,0,0.08)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          fontSize: "13px",
-          color: "#6E6E73",
-        }}>
-          <p>© {new Date().getFullYear()} Emoqa Technologies. All rights reserved.</p>
-          <p style={{ fontStyle: "italic" }}>where emotion meets excellence.</p>
-        </div>
+        <p className="ftr-end">© {new Date().getFullYear()} {contact.company} All rights reserved.</p>
       </div>
     </footer>
   );

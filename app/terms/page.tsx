@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/meta";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions — Emoqa",
-  description: "Terms and conditions for using Emoqa Technologies products and services.",
-};
+export const metadata: Metadata = pageMeta("Terms & Conditions | EMOQA", "Terms and conditions for using Emoqa products and services.", "/terms/");
 
 const sections = [
   {
@@ -94,13 +92,10 @@ export default function TermsPage() {
       <div style={{ maxWidth: "760px", margin: "0 auto" }}>
         {/* Header */}
         <div className="anim-hero-2" style={{ marginBottom: "72px" }}>
-          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B00A0", marginBottom: "20px" }}>
-            Legal
-          </p>
-          <h1 style={{ fontSize: "clamp(36px,5vw,60px)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.06, color: "#1D1D1F", marginBottom: "20px" }}>
+          <h1 style={{ fontSize: "clamp(36px,5vw,60px)", lineHeight: 1.06, color: "var(--text)", marginBottom: "20px" }}>
             Terms &amp; Conditions
           </h1>
-          <p style={{ fontSize: "16px", color: "#6E6E73", lineHeight: 1.7 }}>
+          <p style={{ fontSize: "16px", color: "var(--muted)", lineHeight: 1.7 }}>
             Effective date: October 20, 2026. These terms govern your use of Emoqa Technologies products and services.
             Registered office: Emoqa Pvt. Ltd., Lane No. 04, Opp. Jack &amp; Jill School, Gokul Nagar, Katraj, Pune, Maharashtra 411046.
           </p>
@@ -110,11 +105,11 @@ export default function TermsPage() {
         <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
           {sections.map((s) => (
             <div key={s.title} style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "40px" }}>
-              <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#1D1D1F", marginBottom: "20px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "24px", color: "var(--text)", marginBottom: "20px", letterSpacing: "-0.02em" }}>
                 {s.title}
               </h2>
               {s.body.split("\n\n").map((para, i) => (
-                <p key={i} style={{ fontSize: "16px", color: "#6E6E73", lineHeight: 1.8, marginBottom: "16px" }}>
+                <p key={i} style={{ fontSize: "16px", color: "var(--muted)", lineHeight: 1.8, marginBottom: "16px" }}>
                   {para}
                 </p>
               ))}
@@ -123,14 +118,14 @@ export default function TermsPage() {
         </div>
 
         {/* Footer note */}
-        <div style={{ marginTop: "72px", padding: "32px", borderRadius: "16px", background: "#F5F5F7", border: "1px solid rgba(0,0,0,0.06)" }}>
-          <p style={{ fontSize: "15px", color: "#6E6E73", lineHeight: 1.7 }}>
+        <div style={{ marginTop: "72px", padding: "32px", borderRadius: "16px", background: "var(--mist)", border: "1px solid rgba(0,0,0,0.06)" }}>
+          <p style={{ fontSize: "15px", color: "var(--muted)", lineHeight: 1.7 }}>
             For questions about these terms, please contact us at{" "}
-            <a href="mailto:sales@emoqa.in" style={{ color: "#4B00A0", fontWeight: 600, textDecoration: "none" }}>
+            <a href="mailto:sales@emoqa.in" style={{ color: "var(--purple)", fontWeight: 600, textDecoration: "none" }}>
               sales@emoqa.in
             </a>{" "}
             or call{" "}
-            <a href="tel:+917400040673" style={{ color: "#4B00A0", fontWeight: 600, textDecoration: "none" }}>
+            <a href="tel:+917400040673" style={{ color: "var(--purple)", fontWeight: 600, textDecoration: "none" }}>
               +91 7400040673
             </a>.
           </p>
