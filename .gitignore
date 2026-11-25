@@ -20,6 +20,9 @@
 # production
 /build
 
+# blog database and uploads
+/data/
+
 # misc
 .DS_Store
 *.pem
@@ -39,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 3D render output
+/design/renders/node_modules/
+/design/renders/out/*.png

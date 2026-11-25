@@ -1,0 +1,13 @@
+# Never upload private data or local-only files.
+/data/
+.env*
+.git
+.mcp.json
+.github
+node_modules
+.next
+out
+deploy
+design
+*.tsbuildinfo
+*.pem
